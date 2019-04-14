@@ -5,8 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    android:background="@drawable/lab_loading"
+    android:background="@color/colorLightBlue"
     tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/smart_lab_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/smart_lab_logo"
+        android:layout_marginTop="100dp"
+        android:layout_above="@id/loading_presentage_txt"/>
 
     <TextView
         android:id="@+id/loading_presentage_txt"
@@ -21,10 +32,12 @@
     <ProgressBar
         android:id="@+id/progress_bar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="20dp"/>
+        android:layout_marginBottom="150dp"/>
 
 
 </RelativeLayout>
