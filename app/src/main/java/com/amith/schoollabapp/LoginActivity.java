@@ -26,6 +26,7 @@ public class LoginActivity extends AppCompatActivity {
 
     FirebaseUser firebaseUser;
     TextView forget_password;
+    Button loginButton, signButton;
 
     @Override
     protected void onStart() {
@@ -47,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        Toolbar toolbar = findViewById((R.id.toolbar));
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("LOGIN");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -56,9 +57,9 @@ public class LoginActivity extends AppCompatActivity {
 
         email = findViewById(R.id.login_email);
         password = findViewById(R.id.login_password);
-        final Button loginButton = findViewById(R.id.login_btnLogin);   //Login Button
-        final Button signButton = findViewById(R.id.login_btnSignUp);  //SignUp Button
-        forget_password = findViewById(R.id.forget_password);
+        loginButton = findViewById(R.id.login_btnLogin);   //Login Button
+//        signButton = findViewById(R.id.login_btnSignUp);  //SignUp Button
+//        forget_password = findViewById(R.id.forget_password);
 
 //        forget_password.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -83,7 +84,6 @@ public class LoginActivity extends AppCompatActivity {
                                     if (task.isSuccessful()) {
                                         Intent intent = new Intent(LoginActivity.this, HomeActivity.class);//MainActivity.class.I think this is after the confirm signUp
                                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | intent.FLAG_ACTIVITY_NEW_TASK);
-                                        Toast.makeText(LoginActivity.this, "Login Successfully !", Toast.LENGTH_SHORT).show();
                                         startActivity(intent);
                                         finish();
                                     } else {
@@ -95,12 +95,12 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        signButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) { //to open SignUp
-                openSignUp();
-            }
-        });
+//        signButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) { //to open SignUp
+//                openSignUp();
+//            }
+//        });
     }
 
     //SignUp Button Function

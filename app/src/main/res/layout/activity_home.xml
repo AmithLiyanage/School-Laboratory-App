@@ -15,8 +15,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorDarkCyan"
-            android:theme="@style/Base.ThemeOverlay.AppCompat.Dark.ActionBar">
+            android:background="@color/colorDarkCyan">
 
         </androidx.appcompat.widget.Toolbar>
 
@@ -27,6 +26,18 @@
             android:layout_gravity="center_horizontal"
             android:text="Home"
             android:textSize="30dp" />
+        
+        <Button
+            android:id="@+id/btn_login"
+            android:text="Login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btn_register"
+            android:text="Register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 
