@@ -28,19 +28,19 @@ public class LoginActivity extends AppCompatActivity {
     TextView forget_password;
     Button loginButton, signButton;
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-
-        //for check if user is null
-        if(firebaseUser != null){
-            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-            startActivity(intent);
-            finish();
-        }
-    }
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//
+//        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+//
+//        //for check if user is null
+//        if(firebaseUser != null){
+//            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+//            startActivity(intent);
+//            finish();
+//        }
+//    }
 
 
     @Override
@@ -58,8 +58,8 @@ public class LoginActivity extends AppCompatActivity {
         email = findViewById(R.id.login_email);
         password = findViewById(R.id.login_password);
         loginButton = findViewById(R.id.login_btnLogin);   //Login Button
-//        signButton = findViewById(R.id.login_btnSignUp);  //SignUp Button
-//        forget_password = findViewById(R.id.forget_password);
+        signButton = findViewById(R.id.login_btnSignUp);  //SignUp Button
+        forget_password = findViewById(R.id.forget_password);
 
 //        forget_password.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -68,6 +68,7 @@ public class LoginActivity extends AppCompatActivity {
 //            }
 //        });
 
+        // to Login
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,17 +96,14 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-//        signButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) { //to open SignUp
-//                openSignUp();
-//            }
-//        });
+        //to open SignUp
+        signButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
-    //SignUp Button Function
-    public void openSignUp() {
-        Intent intent = new Intent(this, SignUpActivity.class);
-        startActivity(intent);
-    }
 }
