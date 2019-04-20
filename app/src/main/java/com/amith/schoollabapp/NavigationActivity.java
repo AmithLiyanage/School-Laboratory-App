@@ -14,6 +14,10 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -27,6 +31,9 @@ public class NavigationActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     Button home;
+
+    DatabaseReference reference;
+    FirebaseUser fuser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,15 +56,10 @@ public class NavigationActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+        
+        fuser = FirebaseAuth.getInstance().getCurrentUser();
+        reference = FirebaseDatabase.getInstance().getReference("Users").child(fuser.getUid());
 
-        home = findViewById(R.id.btn_home);
-
-        home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(NavigationActivity.this, HomeActivity.class));
-            }
-        });
     }
 
     @Override
@@ -77,19 +79,34 @@ public class NavigationActivity extends AppCompatActivity
         return true;
     }
 
+    // default OptionsItemSelected
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        int id = item.getItemId();
+//
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
+
+    // in tutorial OptionsItemSelected
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+        switch (item.getItemId()){
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+            case R.id.action_logout:
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(NavigationActivity.this, LoginActivity.class));
+                finish();
+                return true;
         }
-
-        return super.onOptionsItemSelected(item);
+        return false;
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -104,6 +121,8 @@ public class NavigationActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_slideshow) {
 
+        //} else if (id == R.id.nav_chat) {
+            //openChatBox();
         } else if (id == R.id.nav_tools) {
 
         } else if (id == R.id.nav_share) {
