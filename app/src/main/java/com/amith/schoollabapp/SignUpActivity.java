@@ -1,9 +1,5 @@
 package com.amith.schoollabapp;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -11,6 +7,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -39,12 +39,12 @@ public class SignUpActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("SIGNUP");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(SignUpActivity.this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP));
-//            }
-//        });
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(SignUpActivity.this, LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP));
+            }
+        });
 
         userName = findViewById(R.id.signup_userName);
         email = findViewById(R.id.signup_email);
@@ -53,12 +53,7 @@ public class SignUpActivity extends AppCompatActivity {
         phoneNumber = findViewById(R.id.signup_phoneNumber);
         btnSignUp =  findViewById(R.id.signup_btnSignUp);  //SignUp Button
 
-        //try{
         auth = FirebaseAuth.getInstance();
-//        } catch (Exception e) {
-//            System.out.println("Exe : "+e);
-//            Toast.makeText(this, "E : "+e, Toast.LENGTH_LONG).show();
-//        }
 
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,6 +93,7 @@ public class SignUpActivity extends AppCompatActivity {
                         hashMap.put("id", userId);
                         hashMap.put("username", username);
                         hashMap.put("imageURL", "default");
+                        hashMap.put("approve", "no");
 //                        hashMap.put("status", "offline");
 //                        hashMap.put("search", username.toLowerCase());
 
@@ -105,7 +101,7 @@ public class SignUpActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()){
-                                    //change Login to HomeActivity
+                                    Toast.makeText(SignUpActivity.this, "Registration Successful !", Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);//MainActivity.class.I think this is after the confirm signUp
                                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | intent.FLAG_ACTIVITY_NEW_TASK);
                                     startActivity(intent);

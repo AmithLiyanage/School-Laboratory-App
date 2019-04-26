@@ -28,19 +28,19 @@ public class LoginActivity extends AppCompatActivity {
     TextView forget_password;
     Button loginButton, signButton;
 
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//
-//        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-//
-//        //for check if user is null
-//        if(firebaseUser != null){
-//            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-//            startActivity(intent);
-//            finish();
-//        }
-//    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        //for check if user is null
+        if(firebaseUser != null){
+            Intent intent = new Intent(LoginActivity.this, NavigationActivity.class);
+            startActivity(intent);
+            finish();
+        }
+    }
 
 
     @Override
@@ -83,7 +83,7 @@ public class LoginActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
-                                        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);//MainActivity.class.I think this is after the confirm signUp
+                                        Intent intent = new Intent(LoginActivity.this, NavigationActivity.class);//MainActivity.class.I think this is after the confirm signUp
                                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | intent.FLAG_ACTIVITY_NEW_TASK);
                                         startActivity(intent);
                                         finish();
