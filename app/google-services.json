@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "947811181544",
+    "firebase_url": "https://laboratory-aaedc.firebaseio.com",
+    "project_id": "laboratory-aaedc",
+    "storage_bucket": "laboratory-aaedc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:947811181544:android:8c55fcd650a0d984",
+        "android_client_info": {
+          "package_name": "com.amith.schoollabapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "947811181544-t1u5qhcbh1iod64pbjtfkku1qpg3v77o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.amith.schoollabapp",
+            "certificate_hash": "4aaa50474425e266de44c3dc04f47f79df48f015"
+          }
+        },
+        {
+          "client_id": "947811181544-jpnit9ceti6i934feha009pjsd04udm2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtI3KEtr13lRTBtBr-121KOUflTtvIdtk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "947811181544-jpnit9ceti6i934feha009pjsd04udm2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

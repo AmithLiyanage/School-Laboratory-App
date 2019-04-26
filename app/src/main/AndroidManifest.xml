@@ -12,9 +12,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LoginActivity" android:parentActivityName=".HomeActivity"/>
-        <activity android:name=".SignUpActivity" android:parentActivityName=".HomeActivity"/>
-        <activity android:name=".HomeActivity" />
+        <activity android:name=".RecyclerViewActivity"></activity>
+        <activity
+            android:name=".NavigationActivity"
+            android:label="@string/title_activity_navigation"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ResetPasswordActivity" />
+        <activity
+            android:name=".LoginActivity"
+            android:parentActivityName=".HomeActivity" />
+        <activity
+            android:name=".SignUpActivity"
+            android:parentActivityName=".HomeActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
