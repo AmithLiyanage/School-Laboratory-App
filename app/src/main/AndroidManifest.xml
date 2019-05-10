@@ -21,11 +21,11 @@
         <activity
             android:name=".LoginActivity"
             android:parentActivityName=".NavigationActivity" />
-            <!--parent changed-->
+            <!--above line parent changed-->
         <activity
             android:name=".SignUpActivity"
             android:parentActivityName=".NavigationActivity" />
-            <!--parent changed-->
+            <!--above line parent changed-->
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,7 +33,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name=".java.MyFirebaseMessagingService">
+
+        <!--for notification part-->
+        <service android:name=".Service.MyFirebaseInstanceService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
