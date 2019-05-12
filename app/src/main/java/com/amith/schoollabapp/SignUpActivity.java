@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -19,12 +18,14 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.rengwuxian.materialedittext.MaterialEditText;
 
 import java.util.HashMap;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    EditText userName, email, password, cpassword, phoneNumber;
+    MaterialEditText userName, email, password, cpassword, phoneNumber;
+    //EditText userName, email, password, cpassword, phoneNumber;
     Button btnSignUp;
 
     FirebaseAuth auth;
