@@ -130,8 +130,8 @@ public class NavigationActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_slideshow) {
 
-        //} else if (id == R.id.nav_chat) {
-            //openChatBox();
+        } else if (id == R.id.nav_chat) {
+            openChatBox();
         } else if (id == R.id.nav_tools) {
 
         } else if (id == R.id.nav_share) {
@@ -143,5 +143,10 @@ public class NavigationActivity extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void openChatBox() {
+        Intent intent = new Intent(this, ChatBoxActivity.class);
+        startActivity(intent);
     }
 }

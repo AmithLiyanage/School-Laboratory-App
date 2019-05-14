@@ -56,6 +56,7 @@
             android:id="@+id/signup_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textPassword"
             android:layout_marginTop="10dp"
             app:met_floatingLabel="normal"
             android:hint="Password" />
@@ -64,91 +65,10 @@
             android:id="@+id/signup_confirmPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textPassword"
             android:layout_marginTop="10dp"
             app:met_floatingLabel="normal"
             android:hint="Confirm Password" />
-
-
-
-        <!--<EditText-->
-            <!--android:id="@+id/signup_userName"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_gravity="center_horizontal"-->
-            <!--android:layout_marginStart="8dp"-->
-            <!--android:layout_marginTop="24dp"-->
-            <!--android:layout_marginEnd="8dp"-->
-            <!--android:background="@drawable/login_textbox_frame"-->
-            <!--android:ems="10"-->
-            <!--android:hint="User Name"-->
-            <!--android:inputType="textPersonName"-->
-            <!--android:paddingLeft="20dp"-->
-            <!--android:textColor="@color/colorWhite"-->
-            <!--android:textColorHint="@color/colorLightCyan" />-->
-
-        <!--<EditText-->
-            <!--android:id="@+id/signup_email"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_gravity="center_horizontal"-->
-            <!--android:layout_marginStart="8dp"-->
-            <!--android:layout_marginTop="16dp"-->
-            <!--android:layout_marginEnd="8dp"-->
-            <!--android:background="@drawable/login_textbox_frame"-->
-            <!--android:ems="10"-->
-            <!--android:hint="Email"-->
-            <!--android:paddingLeft="20dp"-->
-            <!--android:inputType="textEmailAddress"-->
-            <!--android:textColor="@color/colorWhite"-->
-            <!--android:textColorHint="@color/colorLightCyan"/>-->
-
-        <!--<EditText-->
-            <!--android:id="@+id/signup_phoneNumber"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_gravity="center_horizontal"-->
-            <!--android:layout_marginStart="8dp"-->
-            <!--android:layout_marginTop="16dp"-->
-            <!--android:layout_marginEnd="8dp"-->
-            <!--android:background="@drawable/login_textbox_frame"-->
-            <!--android:ems="10"-->
-            <!--android:hint="Phone Number"-->
-            <!--android:inputType="phone"-->
-            <!--android:paddingLeft="20dp"-->
-            <!--android:textColor="@color/colorWhite"-->
-            <!--android:textColorHint="@color/colorLightCyan"/>-->
-
-        <!--<EditText-->
-            <!--android:id="@+id/signup_password"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_gravity="center_horizontal"-->
-            <!--android:layout_marginStart="8dp"-->
-            <!--android:layout_marginTop="16dp"-->
-            <!--android:layout_marginEnd="8dp"-->
-            <!--android:background="@drawable/login_textbox_frame"-->
-            <!--android:ems="10"-->
-            <!--android:hint="password"-->
-            <!--android:inputType="textPassword"-->
-            <!--android:paddingLeft="20dp"-->
-            <!--android:textColor="@color/colorWhite"-->
-            <!--android:textColorHint="@color/colorLightCyan"/>-->
-
-        <!--<EditText-->
-            <!--android:id="@+id/signup_confirmPassword"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_gravity="center_horizontal"-->
-            <!--android:layout_marginStart="8dp"-->
-            <!--android:layout_marginTop="16dp"-->
-            <!--android:layout_marginEnd="8dp"-->
-            <!--android:background="@drawable/login_textbox_frame"-->
-            <!--android:ems="10"-->
-            <!--android:hint="Confirm Password"-->
-            <!--android:inputType="textPassword"-->
-            <!--android:paddingLeft="20dp"-->
-            <!--android:textColor="@color/colorWhite"-->
-            <!--android:textColorHint="@color/colorLightCyan" />-->
 
         <TextView
             android:id="@+id/textView13"

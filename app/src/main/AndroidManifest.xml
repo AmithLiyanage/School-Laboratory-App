@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RecyclerViewActivity"></activity>
+        <activity android:name=".ChatBoxActivity"></activity>
+        <activity android:name=".RecyclerViewActivity" />
         <activity
             android:name=".NavigationActivity"
             android:label="@string/title_activity_navigation"
@@ -20,21 +21,17 @@
         <activity android:name=".ResetPasswordActivity" />
         <activity
             android:name=".LoginActivity"
-            android:parentActivityName=".NavigationActivity" />
-            <!--above line parent changed-->
+            android:parentActivityName=".NavigationActivity" /> <!-- above line parent changed -->
         <activity
             android:name=".SignUpActivity"
-            android:parentActivityName=".NavigationActivity" />
-            <!--above line parent changed-->
+            android:parentActivityName=".NavigationActivity" /> <!-- above line parent changed -->
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <!--for notification part-->
+        </activity> <!-- for notification part -->
         <service android:name=".Service.MyFirebaseInstanceService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />

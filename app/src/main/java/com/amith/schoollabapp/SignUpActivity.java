@@ -25,7 +25,6 @@ import java.util.HashMap;
 public class SignUpActivity extends AppCompatActivity {
 
     MaterialEditText userName, email, password, cpassword, phoneNumber;
-    //EditText userName, email, password, cpassword, phoneNumber;
     Button btnSignUp;
 
     FirebaseAuth auth;

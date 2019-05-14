@@ -40,43 +40,17 @@
             android:id="@+id/login_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textPassword"
             android:layout_marginTop="10dp"
             app:met_floatingLabel="normal"
             android:hint="Password" />
-
-        <!--<EditText-->
-            <!--android:id="@+id/login_email"-->
-            <!--android:layout_width="270dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_centerHorizontal="true"-->
-            <!--android:background="@drawable/login_textbox_frame"-->
-            <!--android:hint="name@gmail.com"-->
-            <!--android:inputType="textEmailAddress"-->
-            <!--android:layout_marginTop="50dp"-->
-            <!--android:textColor="@color/colorWhite"-->
-            <!--android:paddingLeft="20dp"-->
-            <!--android:textColorHint="@color/colorWhite"/>-->
-
-        <!--<EditText-->
-            <!--android:id="@+id/login_password"-->
-            <!--android:layout_width="270dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_centerHorizontal="true"-->
-            <!--android:layout_below="@+id/login_email"-->
-            <!--android:background="@drawable/login_textbox_frame"-->
-            <!--android:hint="Password"-->
-            <!--android:layout_marginTop="15dp"-->
-            <!--android:inputType="textPassword"-->
-            <!--android:textColor="@color/colorWhite"-->
-            <!--android:paddingLeft="20dp"-->
-            <!--android:textColorHint="@color/colorWhite"/>-->
 
         <Button
             android:id="@+id/login_btnLogin"
             android:text="LOGIN"
             android:layout_width="240dp"
             android:layout_height="55dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="60dp"
             android:background="@drawable/custom_button"
             android:layout_gravity="center_horizontal"
             android:textAlignment="center"
@@ -92,7 +66,7 @@
             android:background="@drawable/custom_txt_frame"
             android:layout_width="240dp"
             android:layout_height="55dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:layout_gravity="center_horizontal"
             android:textAlignment="center"
             android:clickable="true"
