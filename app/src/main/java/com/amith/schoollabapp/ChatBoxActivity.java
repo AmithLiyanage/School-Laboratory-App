@@ -7,11 +7,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
+import com.amith.schoollabapp.Fragment.ChatFragment;
+import com.amith.schoollabapp.Fragment.UserFragment;
 import com.amith.schoollabapp.Model.User;
 import com.bumptech.glide.Glide;
+import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -19,6 +27,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -83,17 +93,17 @@ public class ChatBoxActivity extends AppCompatActivity {
             }
         });
 
-//        final TabLayout tabLayout = findViewById(R.id.tab_layout);
-//        final ViewPager viewPager = findViewById(R.id.view_pager);
-//
-//        //remove loacation of here line in 2o th video
-//
-//        //and add these
+        final TabLayout tabLayout = findViewById(R.id.tab_layout);
+        final ViewPager viewPager = findViewById(R.id.view_pager);
+
+        //remove loacation of here line in 2o th video
+
+        //and add these
 //        reference = FirebaseDatabase.getInstance().getReference("Chats");
 //        reference.addValueEventListener(new ValueEventListener() {
 //            @Override
 //            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager()); //move to here
+                ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager()); //move to here
 //                int unread = 0;
 //                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
 //                    Chat chat = snapshot.getValue(Chat.class);
@@ -108,13 +118,14 @@ public class ChatBoxActivity extends AppCompatActivity {
 //                } else {
 //                    viewPagerAdapter.addFragment(new ChatFragment(), "("+unread+") Chats");
 //                }
-//
-//                viewPagerAdapter.addFragment(new UsersFragment(), "Users");
-//                //viewPagerAdapter.addFragment(new ProfileFragment(), "Profile");
-//
-//                viewPager.setAdapter(viewPagerAdapter);
-//
-//                tabLayout.setupWithViewPager(viewPager);
+
+                viewPagerAdapter.addFragment(new ChatFragment(), "Chat");
+                viewPagerAdapter.addFragment(new UserFragment(), "Users");
+
+
+                viewPager.setAdapter(viewPagerAdapter);
+
+                tabLayout.setupWithViewPager(viewPager);
 //            }
 //
 //            @Override
@@ -122,5 +133,42 @@ public class ChatBoxActivity extends AppCompatActivity {
 //
 //            }
 //        });
+    }
+
+    class ViewPagerAdapter extends FragmentPagerAdapter {
+
+        private ArrayList<Fragment> fragments;
+        private ArrayList<String> titles;
+
+        ViewPagerAdapter(FragmentManager fm) {
+            super(fm);
+            this.fragments = new ArrayList<>();
+            this.titles = new ArrayList<>();
+
+        }
+
+        @NonNull
+        @Override
+        public Fragment getItem(int position) {
+            return fragments.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return fragments.size();
+        }
+
+        public void addFragment(Fragment fragment, String title) {
+            fragments.add(fragment);
+            titles.add(title);
+        }
+
+        //Ctrl + O
+
+        @Nullable
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return titles.get(position);
+        }
     }
 }
