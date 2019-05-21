@@ -68,22 +68,20 @@ public class ChatBoxActivity extends AppCompatActivity {
 
                     User user = dataSnapshot.getValue(User.class);//error point
                     username.setText(user.getUsername());
-                    //username.setText("Amith");
 
-                try {
-                    if(user.getImageURL().equals("default")){
-                        //profile_image.setImageResource(R.mipmap.ic_launcher);
-                        profile_image.setImageResource(R.drawable.pp_icon);
-                    } else {
+                    try {
+                        if(user.getImageURL().equals("default")){
+                            profile_image.setImageResource(R.drawable.pp_icon);
+                        } else {
 
-                        // change here(14 th video)
-                        Glide.with(getApplicationContext()).load(user.getImageURL()).into(profile_image);
+                            // change here(14 th video)
+                            Glide.with(getApplicationContext()).load(user.getImageURL()).into(profile_image);
+                        }
+
+                    } catch (Exception e) {
+                        System.out.println("pic : " + e);
+                        Toast.makeText(ChatBoxActivity.this, "picture error : "+e.getMessage(), Toast.LENGTH_LONG).show();
                     }
-
-                } catch (Exception e) {
-                    System.out.println("pic : " + e);
-                    Toast.makeText(ChatBoxActivity.this, "pic toast : "+e.getMessage(), Toast.LENGTH_LONG).show();
-                }
 
             }
 
@@ -96,50 +94,25 @@ public class ChatBoxActivity extends AppCompatActivity {
         final TabLayout tabLayout = findViewById(R.id.tab_layout);
         final ViewPager viewPager = findViewById(R.id.view_pager);
 
-        //remove loacation of here line in 2o th video
+        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager()); //move to here
 
-        //and add these
-//        reference = FirebaseDatabase.getInstance().getReference("Chats");
-//        reference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager()); //move to here
-//                int unread = 0;
-//                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
-//                    Chat chat = snapshot.getValue(Chat.class);
-//                    if (chat.getReceiver().equals(firebaseUser.getUid()) && !chat.isIsseen()) {//count unread messages
-//                        unread++;
-//                    }
-//
-//
-//                }
-//                if (unread == 0) {
-//                    viewPagerAdapter.addFragment(new ChatFragment(), "Chats");
-//                } else {
-//                    viewPagerAdapter.addFragment(new ChatFragment(), "("+unread+") Chats");
-//                }
-
-                viewPagerAdapter.addFragment(new ChatFragment(), "Chat");
-                viewPagerAdapter.addFragment(new UserFragment(), "Users");
+        viewPagerAdapter.addFragment(new ChatFragment(), "Chat");
+        viewPagerAdapter.addFragment(new UserFragment(), "Users");
 
 
-                viewPager.setAdapter(viewPagerAdapter);
+        viewPager.setAdapter(viewPagerAdapter);
 
-                tabLayout.setupWithViewPager(viewPager);
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
+        tabLayout.setupWithViewPager(viewPager);
+
     }
 
+    //new for super in ViewPagerAdapter
     class ViewPagerAdapter extends FragmentPagerAdapter {
 
         private ArrayList<Fragment> fragments;
         private ArrayList<String> titles;
 
+        @SuppressWarnings("deprecation")
         ViewPagerAdapter(FragmentManager fm) {
             super(fm);
             this.fragments = new ArrayList<>();
@@ -164,7 +137,6 @@ public class ChatBoxActivity extends AppCompatActivity {
         }
 
         //Ctrl + O
-
         @Nullable
         @Override
         public CharSequence getPageTitle(int position) {
