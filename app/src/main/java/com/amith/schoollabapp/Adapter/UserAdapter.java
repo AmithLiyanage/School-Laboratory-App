@@ -66,14 +66,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 //            holder.img_off.setVisibility(View.GONE);
 //        }
 //
-//        holder.itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(mContext, MessageActivity.class);
-//                intent.putExtra("userid", user.getId());
-//                mContext.startActivity(intent);
-//            }
-//        });
+
     }
 
     @Override

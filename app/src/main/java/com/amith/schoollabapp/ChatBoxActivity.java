@@ -66,22 +66,22 @@ public class ChatBoxActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                    User user = dataSnapshot.getValue(User.class);//error point
+                try {
+                    User user = dataSnapshot.getValue(User.class);
                     username.setText(user.getUsername());
 
-                    try {
-                        if(user.getImageURL().equals("default")){
-                            profile_image.setImageResource(R.drawable.pp_icon);
-                        } else {
+                    if(user.getImageURL().equals("default")){
+                        profile_image.setImageResource(R.drawable.pp_icon);
+                    } else {
 
-                            // change here(14 th video)
-                            Glide.with(getApplicationContext()).load(user.getImageURL()).into(profile_image);
-                        }
-
-                    } catch (Exception e) {
-                        System.out.println("pic : " + e);
-                        Toast.makeText(ChatBoxActivity.this, "picture error : "+e.getMessage(), Toast.LENGTH_LONG).show();
+                        // change here(14 th video)
+                        Glide.with(getApplicationContext()).load(user.getImageURL()).into(profile_image);
                     }
+
+                } catch (Exception e) {
+                    System.out.println("pic : " + e);
+                    Toast.makeText(ChatBoxActivity.this, "picture error : "+e.getMessage(), Toast.LENGTH_LONG).show();
+                }
 
             }
 
@@ -112,7 +112,6 @@ public class ChatBoxActivity extends AppCompatActivity {
         private ArrayList<Fragment> fragments;
         private ArrayList<String> titles;
 
-        @SuppressWarnings("deprecation")
         ViewPagerAdapter(FragmentManager fm) {
             super(fm);
             this.fragments = new ArrayList<>();

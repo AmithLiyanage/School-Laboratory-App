@@ -108,14 +108,13 @@ public class UserFragment extends Fragment {
     private void readUsers(){
 
         final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        Toast.makeText(UserFragment.this.getContext(), "user = "+firebaseUser, Toast.LENGTH_SHORT).show();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
 
         Toast.makeText(UserFragment.this.getContext(), "A", Toast.LENGTH_SHORT).show();
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (search_users.getText().toString().equals("")) {
+                //if (search_users.getText().toString().equals("")) {
                     mUsers.clear();
                     Toast.makeText(UserFragment.this.getContext(), "a", Toast.LENGTH_SHORT).show();
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
@@ -136,7 +135,7 @@ public class UserFragment extends Fragment {
                         Toast.makeText(UserFragment.this.getContext(), "2 : "+e.getMessage(), Toast.LENGTH_LONG).show();
                     }
 
-                }
+                //}
             }
 
             @Override
