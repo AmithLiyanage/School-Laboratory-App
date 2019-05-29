@@ -110,13 +110,11 @@ public class UserFragment extends Fragment {
         final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
 
-        Toast.makeText(UserFragment.this.getContext(), "A", Toast.LENGTH_SHORT).show();
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 //if (search_users.getText().toString().equals("")) {
                     mUsers.clear();
-                    Toast.makeText(UserFragment.this.getContext(), "a", Toast.LENGTH_SHORT).show();
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         User user = snapshot.getValue(User.class);
 
@@ -129,10 +127,9 @@ public class UserFragment extends Fragment {
 
                     try {
                         userAdapter = new UserAdapter(getContext(), mUsers);//, false
-                        //recyclerView.setAdapter(userAdapter);
-                        Toast.makeText(UserFragment.this.getContext(), "1", Toast.LENGTH_SHORT).show();
+                        recyclerView.setAdapter(userAdapter);
                     } catch (Exception e) {
-                        Toast.makeText(UserFragment.this.getContext(), "2 : "+e.getMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(UserFragment.this.getContext(), "User loading Errror : "+e.getMessage(), Toast.LENGTH_LONG).show();
                     }
 
                 //}
