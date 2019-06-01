@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +22,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -78,26 +81,26 @@ public class MessageActivity extends AppCompatActivity {
 
         profile_image = findViewById(R.id.profile_image);
         username = findViewById(R.id.username);
-//        btn_send = findViewById(R.id.btn_send);
-//        text_send = findViewById(R.id.text_send);
+        btn_send = findViewById(R.id.btn_send);
+        text_send = findViewById(R.id.text_send);
 
         intent = getIntent();
         final String userid = intent.getStringExtra("userid");
         fuser = FirebaseAuth.getInstance().getCurrentUser();
 
-//        btn_send.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                notify = true;
-//                String msg = text_send.getText().toString();
-//                if (!msg.equals("")) {
-//                    sendMessage(fuser.getUid(), userid, msg);
-//                } else {
-//                    Toast.makeText(MessageActivity.this, "You can't send empty message", Toast.LENGTH_SHORT).show();
-//                }
-//                text_send.setText("");
-//            }
-//        });
+        btn_send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                notify = true;
+                String msg = text_send.getText().toString();
+                if (!msg.equals("")) {
+                    sendMessage(fuser.getUid(), userid, msg);
+                } else {
+                    Toast.makeText(MessageActivity.this, "You can't send empty message", Toast.LENGTH_SHORT).show();
+                }
+                text_send.setText("");
+            }
+        });
 
         reference = FirebaseDatabase.getInstance().getReference("Users").child(userid);
 
@@ -148,38 +151,38 @@ public class MessageActivity extends AppCompatActivity {
 //            }
 //        });
 //    }
-//
-//    private void sendMessage(String sender, final String receiver, String message){
-//
-//        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
-//
-//        HashMap<String, Object> hashMap = new HashMap<>();
-//        hashMap.put("sender", sender);
-//        hashMap.put("receiver", receiver);
-//        hashMap.put("message", message);
-//        hashMap.put("isseen", false);
-//
-//        reference.child("Chats").push().setValue(hashMap);
-//
-//        final DatabaseReference chatRef = FirebaseDatabase.getInstance().getReference("Chatlist")
-//                .child(fuser.getUid())
-//                .child(receiver);//userid
-//
-//        // add user to chat fragment
-//        chatRef.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                if (!dataSnapshot.exists()){
-//                    chatRef.child("id").setValue(receiver);//userid
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
-//
+
+    private void sendMessage(String sender, final String receiver, String message){
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("sender", sender);
+        hashMap.put("receiver", receiver);
+        hashMap.put("message", message);
+        hashMap.put("isseen", false);
+
+        reference.child("Chats").push().setValue(hashMap);
+
+        final DatabaseReference chatRef = FirebaseDatabase.getInstance().getReference("Chatlist")
+                .child(fuser.getUid())
+                .child(receiver);//userid
+
+        // add user to chat fragment
+        chatRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (!dataSnapshot.exists()){
+                    chatRef.child("id").setValue(receiver);//userid
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
 //        final String msg = message;
 //
 //        reference = FirebaseDatabase.getInstance().getReference("User").child(fuser.getUid());
@@ -198,7 +201,7 @@ public class MessageActivity extends AppCompatActivity {
 //
 //            }
 //        });
-//    }
+    }
 
 //    private void sendNotification(String receiver, final String username, final String message) {
 //        DatabaseReference tokens = FirebaseDatabase.getInstance().getReference("Tokens");

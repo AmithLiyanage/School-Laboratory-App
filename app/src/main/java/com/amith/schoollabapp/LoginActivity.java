@@ -82,13 +82,17 @@ public class LoginActivity extends AppCompatActivity {
                             .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if (task.isSuccessful()) {
-                                        Intent intent = new Intent(LoginActivity.this, NavigationActivity.class);//MainActivity.class.I think this is after the confirm signUp
-                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | intent.FLAG_ACTIVITY_NEW_TASK);
-                                        startActivity(intent);
-                                        finish();
-                                    } else {
-                                        Toast.makeText(LoginActivity.this, "Authentication Failed", Toast.LENGTH_SHORT).show();
+                                    try {
+                                        if (task.isSuccessful()) {
+                                            Intent intent = new Intent(LoginActivity.this, NavigationActivity.class);
+                                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | intent.FLAG_ACTIVITY_NEW_TASK);
+                                            startActivity(intent);
+                                            finish();
+                                        } else {
+                                            Toast.makeText(LoginActivity.this, "Authentication Failed", Toast.LENGTH_SHORT).show();
+                                        }
+                                    } catch (Exception e) {
+                                        Toast.makeText(LoginActivity.this, "Login error : "+e, Toast.LENGTH_LONG).show();
                                     }
                                 }
                             });
