@@ -115,7 +115,7 @@ public class MessageActivity extends AppCompatActivity {
                 User user = dataSnapshot.getValue(User.class);
                 username.setText(user.getUsername());
                 if (user.getUsername().equals("default")){
-                    profile_image.setImageResource(R.mipmap.ic_launcher);
+                    profile_image.setImageResource(R.drawable.pp_icon);
                 } else {
                     //Glide.with(mContext).load(user.getImageURL()).into(holder.profile_image);
                     // change here in 14th video

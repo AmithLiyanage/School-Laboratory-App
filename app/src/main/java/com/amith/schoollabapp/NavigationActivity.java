@@ -109,6 +109,12 @@ public class NavigationActivity extends AppCompatActivity
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
 
+            case R.id.action_profile:
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(NavigationActivity.this, ProfileActivity.class));
+                finish();
+                return true;
+
             case R.id.action_logout:
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(NavigationActivity.this, LoginActivity.class));

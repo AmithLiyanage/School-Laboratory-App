@@ -21,7 +21,9 @@
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:id="@+id/profile_image"/>
+                android:id="@+id/profile_image"
+                android:src="@drawable/pp_icon"/>
+            <!-- android:src is addition one -->
 
             <TextView
                 android:id="@+id/username"
