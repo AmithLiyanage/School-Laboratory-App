@@ -6,7 +6,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -58,16 +57,16 @@ public class NavigationActivity extends AppCompatActivity
 
         recycleview = findViewById(R.id.btn_innav);
 
-        try {
-            recycleview.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    startActivity(new Intent(NavigationActivity.this, RecyclerViewActivity.class));
-                }
-            });
-        } catch (Exception e) {
-            Toast.makeText(this, "Recycler btn : "+e, Toast.LENGTH_LONG).show();
-        }
+//        try {
+//            recycleview.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    startActivity(new Intent(NavigationActivity.this, RecyclerViewActivity.class));
+//                }
+//            });
+//        } catch (Exception e) {
+//            Toast.makeText(this, "Recycler btn : "+e, Toast.LENGTH_LONG).show();
+//        }
 
     }
 
@@ -112,7 +111,7 @@ public class NavigationActivity extends AppCompatActivity
             case R.id.action_profile:
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(NavigationActivity.this, ProfileActivity.class));
-                finish();
+//                finish();
                 return true;
 
             case R.id.action_logout:
