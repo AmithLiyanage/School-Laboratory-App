@@ -2,9 +2,9 @@ package com.amith.schoollabapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -67,8 +67,9 @@ public class ChatBoxActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 try {
-                    User user = dataSnapshot.getValue(User.class);
+                    User user = dataSnapshot.getValue(User.class);//error point
                     username.setText(user.getUsername());
+                    //username.setText("Amith");
 
                     if(user.getImageURL().equals("default")){
                         profile_image.setImageResource(R.drawable.pp_icon);
@@ -77,10 +78,8 @@ public class ChatBoxActivity extends AppCompatActivity {
                         // change here(14 th video)
                         Glide.with(getApplicationContext()).load(user.getImageURL()).into(profile_image);
                     }
-
-                } catch (Exception e) {
-                    System.out.println("pic : " + e);
-                    Toast.makeText(ChatBoxActivity.this, "picture error : "+e.getMessage(), Toast.LENGTH_LONG).show();
+                }catch(Exception e){
+                    Log.e("Error",e.toString());
                 }
 
             }

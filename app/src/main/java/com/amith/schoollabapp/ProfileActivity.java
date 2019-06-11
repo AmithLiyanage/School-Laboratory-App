@@ -5,7 +5,6 @@ import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.TextView;
@@ -42,7 +41,7 @@ public class ProfileActivity extends AppCompatActivity {
     CircleImageView image_profile;
     TextView username;
 
-    DatabaseReference reference;
+    DatabaseReference reference, referenceChild;
     FirebaseUser fuser;
 
     StorageReference storageReference;
@@ -57,7 +56,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById((R.id.toolbar));
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("");
+        getSupportActionBar().setTitle("Your Profile");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,32 +65,35 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-
-        //firebase connections
-        reference = FirebaseDatabase.getInstance().getReference("Users");
-        fuser = FirebaseAuth.getInstance().getCurrentUser();
-
         image_profile = findViewById(R.id.profile_image);
         username = findViewById(R.id.username);
+
+        //firebase connections
+        fuser = FirebaseAuth.getInstance().getCurrentUser();
+        reference = FirebaseDatabase.getInstance().getReference("Users");//.child(fuser.getUid())
 
         storageReference = FirebaseStorage.getInstance().getReference("uploads");
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                User user = dataSnapshot.getValue(User.class);
-                username.setText(user.getUsername());
+                Toast.makeText(ProfileActivity.this, "pp", Toast.LENGTH_SHORT).show();
 
-                try{
+//
+//                try{
+                    User user = dataSnapshot.getValue(User.class);
+                    username.setText(user.getUsername());
+
                     if(user.getImageURL().equals("default")){
                         image_profile.setImageResource(R.drawable.pp_icon);
                     } else {
                         Glide.with(ProfileActivity.this).load(user.getImageURL()).into(image_profile);
                     }
-                } catch (Exception e) {
-                    Toast.makeText(ProfileActivity.this, "pp : "+e.getMessage(), Toast.LENGTH_LONG).show();
-                    Log.v("PP", e.getMessage());
-                }
+//                } catch (Exception e) {
+//                    Toast.makeText(ProfileActivity.this, "pp & user: "+e.getMessage(), Toast.LENGTH_LONG).show();
+//                    Log.v("PP & user", e.getMessage());
+//                }
+//                Toast.makeText(ProfileActivity.this, "pp", Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -148,10 +150,10 @@ public class ProfileActivity extends AppCompatActivity {
                         Uri downloadUri = task.getResult();
                         String mUri = downloadUri.toString();
 
-                        reference = FirebaseDatabase.getInstance().getReference("Users").child(fuser.getUid());
+                        referenceChild = FirebaseDatabase.getInstance().getReference("Users").child(fuser.getUid());
                         HashMap<String, Object> map = new HashMap<>();
                         map.put("imageURL", mUri);
-                        reference.updateChildren(map);
+                        referenceChild.updateChildren(map);
 
                         pd.dismiss();
                     } else {

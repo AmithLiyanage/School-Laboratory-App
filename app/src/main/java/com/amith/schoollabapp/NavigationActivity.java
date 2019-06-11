@@ -54,7 +54,7 @@ public class NavigationActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         fuser = FirebaseAuth.getInstance().getCurrentUser();
-        reference = FirebaseDatabase.getInstance().getReference("Users").child(fuser.getUid());
+        reference = FirebaseDatabase.getInstance().getReference("Users");
 
         recycleview = findViewById(R.id.btn_innav);
 
@@ -66,7 +66,7 @@ public class NavigationActivity extends AppCompatActivity
                 }
             });
         } catch (Exception e) {
-            Toast.makeText(this, "Recyler btn : "+e, Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Recycler btn : "+e, Toast.LENGTH_LONG).show();
         }
 
     }

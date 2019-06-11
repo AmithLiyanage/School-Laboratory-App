@@ -17,12 +17,15 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
 public class LoginActivity extends AppCompatActivity {
 
     MaterialEditText email, password;
     FirebaseAuth auth;
+    DatabaseReference referenceCanAccess;
 
     FirebaseUser firebaseUser;
     TextView forget_password;
@@ -33,9 +36,11 @@ public class LoginActivity extends AppCompatActivity {
         super.onStart();
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        referenceCanAccess = FirebaseDatabase.getInstance().getReference("Users");//.child(firebaseUser.toString()).child("approve")
 
         //for check if user is null
         if(firebaseUser != null){
+            //Toast.makeText(LoginActivity.this, "User status : "+referenceCanAccess, Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(LoginActivity.this, NavigationActivity.class);
             startActivity(intent);
             finish();
