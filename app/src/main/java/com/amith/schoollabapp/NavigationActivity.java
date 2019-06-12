@@ -2,6 +2,7 @@ package com.amith.schoollabapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -136,6 +137,8 @@ public class NavigationActivity extends AppCompatActivity
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_chat) {
+            openProfile();
+        } else if (id == R.id.nav_chat) {
             openChatBox();
         } else if (id == R.id.nav_tools) {
 
@@ -148,6 +151,12 @@ public class NavigationActivity extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void openProfile() {
+        Intent intent = new Intent(this, ProfileActivity.class);
+        startActivity(intent);
+        Log.v("Nav", "go to profile");
     }
 
     public void openChatBox() {
