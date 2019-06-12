@@ -21,32 +21,37 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.1.0-alpha04'// new version
-    implementation 'com.android.support:cardview-v7:28.0.0'// import card view
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'androidx.appcompat:appcompat:1.1.0-beta01'// new version
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 
-    // new
-    implementation 'com.android.support:design:28.0.0'
-    implementation 'com.google.android.gms:play-services-maps:16.1.0'
-    implementation 'com.google.firebase:firebase-auth:16.2.1'// to connect 'firebase'
-    implementation 'com.google.firebase:firebase-database:16.1.0'
-    implementation 'com.google.firebase:firebase-core:16.0.8'// 1st to connect 'firebase'
-    implementation 'com.rengwuxian.materialedittext:library:2.1.4'
-    implementation 'com.google.firebase:firebase-storage:16.1.0'
-
-    // this for chat app
-    implementation 'de.hdodenhof:circleimageview:2.2.0'//add this library for chat app
-    implementation 'com.github.bumptech.glide:glide:4.8.0'//and this
-
     // add this for grid and list view
-    implementation 'com.android.support:appcompat-v7:28.0.0-alpha3'
-    implementation 'com.android.support:cardview-v7:28.0.0'
+    implementation 'com.android.support:support-v4:28.0.0'
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.android.support:cardview-v7:28.0.0'// import card view
     implementation 'com.android.support:recyclerview-v7:28.0.0'
     // Ctrl + D --> make duplicate line like where cursor are
+
+    // new
+    implementation 'com.google.android.gms:play-services-maps:16.1.0'
+    implementation 'com.google.firebase:firebase-auth:17.0.0'// to connect 'firebase'
+    implementation 'com.google.firebase:firebase-database:17.0.0'
+    implementation 'com.google.firebase:firebase-core:16.0.9'// 1st to connect 'firebase'
+    implementation 'com.rengwuxian.materialedittext:library:2.1.4'
+    implementation 'com.google.firebase:firebase-storage:17.0.0'
+    implementation 'com.google.firebase:firebase-messaging:18.0.0'//messaging
+
+    // this for chat app
+    implementation 'de.hdodenhof:circleimageview:2.1.0'//add this library for chat app
+    implementation 'com.github.bumptech.glide:glide:4.8.0'//and this
+    implementation 'com.rengwuxian.materialedittext:library:2.1.4'
 
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'com.google.android.material:material:1.0.0'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.2.0-alpha03'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0-alpha03'
+    androidTestImplementation 'androidx.test:runner:1.2.0-beta01'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0-beta01'
 }
+
+apply plugin: 'com.google.gms.google-services' //new in May 10(I think missing one)
+

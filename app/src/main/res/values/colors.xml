@@ -6,6 +6,7 @@
 
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorLightBlue">#979CDE</color>
+    <color name="colorVeryLightBlue">#B6BAE9</color>
     <color name="colorPurple">#764692</color>
     <color name="colorLightPurple">#CA08A3</color>
     <color name="colorDarkCyan">#11858E</color>
