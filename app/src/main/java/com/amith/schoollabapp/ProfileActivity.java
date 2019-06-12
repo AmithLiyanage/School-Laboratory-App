@@ -67,7 +67,7 @@ public class ProfileActivity extends AppCompatActivity {
         Log.v("Profile Activity","Fuser : " + fuser);
 //        reference = FirebaseDatabase.getInstance().getReference("Users").child(fuser.getUid());//
 //        Log.v("Profile Activity","Fuser : " + reference.);
-        Log.v("Profile Activity","Fuser : " + fuser.getUid());
+//        Log.v("Profile Activity","Fuser : " + fuser.getUid());
 
         storageReference = FirebaseStorage.getInstance().getReference("uploads");
 
