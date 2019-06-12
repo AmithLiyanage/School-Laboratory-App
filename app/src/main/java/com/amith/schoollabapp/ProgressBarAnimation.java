@@ -1,7 +1,6 @@
 package com.amith.schoollabapp;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
 import android.widget.ProgressBar;
@@ -30,8 +29,6 @@ public class ProgressBarAnimation extends Animation {
         progressBar.setProgress((int)value);
         textView.setText((int)value + " %");
 
-        if (value == to) {
-            context.startActivity(new Intent(context, LoginActivity.class));//HomeActivity
-        }
+
     }
 }

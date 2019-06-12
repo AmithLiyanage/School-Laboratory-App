@@ -6,7 +6,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -54,20 +53,20 @@ public class NavigationActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         fuser = FirebaseAuth.getInstance().getCurrentUser();
-        reference = FirebaseDatabase.getInstance().getReference("Users").child(fuser.getUid());
+        reference = FirebaseDatabase.getInstance().getReference("Users");
 
         recycleview = findViewById(R.id.btn_innav);
 
-        try {
-            recycleview.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    startActivity(new Intent(NavigationActivity.this, RecyclerViewActivity.class));
-                }
-            });
-        } catch (Exception e) {
-            Toast.makeText(this, "Recyler btn : "+e, Toast.LENGTH_LONG).show();
-        }
+//        try {
+//            recycleview.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    startActivity(new Intent(NavigationActivity.this, RecyclerViewActivity.class));
+//                }
+//            });
+//        } catch (Exception e) {
+//            Toast.makeText(this, "Recycler btn : "+e, Toast.LENGTH_LONG).show();
+//        }
 
     }
 
@@ -109,6 +108,12 @@ public class NavigationActivity extends AppCompatActivity
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
 
+            case R.id.action_profile:
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(NavigationActivity.this, ProfileActivity.class));
+//                finish();
+                return true;
+
             case R.id.action_logout:
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(NavigationActivity.this, LoginActivity.class));
@@ -130,8 +135,8 @@ public class NavigationActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_slideshow) {
 
-        //} else if (id == R.id.nav_chat) {
-            //openChatBox();
+        } else if (id == R.id.nav_chat) {
+            openChatBox();
         } else if (id == R.id.nav_tools) {
 
         } else if (id == R.id.nav_share) {
@@ -143,5 +148,10 @@ public class NavigationActivity extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void openChatBox() {
+        Intent intent = new Intent(this, ChatBoxActivity.class);
+        startActivity(intent);
     }
 }
