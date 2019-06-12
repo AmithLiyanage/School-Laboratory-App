@@ -25,6 +25,10 @@
     <item android:title="Communicate">
         <menu>
             <item
+                android:id="@+id/nav_profile"
+                android:icon="@drawable/ic_menu_profile"
+                android:title="Profile" />
+            <item
                 android:id="@+id/nav_chat"
                 android:icon="@drawable/ic_menu_chat"
                 android:title="@string/menu_chat" />
