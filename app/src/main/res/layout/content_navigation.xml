@@ -12,18 +12,18 @@
     tools:showIn="@layout/app_bar_navigation">
     <!--i think weightSum work like boostrap grid-->
 
-    <RelativeLayout
-        android:layout_weight="2"
-        android:layout_width="match_parent"
-        android:layout_height="0dp">
+    <!--<RelativeLayout-->
+        <!--android:layout_weight="2"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp">-->
 
-        <Button
-            android:id="@+id/btn_innav"
-            android:text="To Recycle view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+        <!--<Button-->
+            <!--android:id="@+id/btn_innav"-->
+            <!--android:text="To Recycle view"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content" />-->
 
-    </RelativeLayout>
+    <!--</RelativeLayout>-->
 
     <GridLayout
         android:columnCount="2"
@@ -60,12 +60,12 @@
                     android:src="@drawable/m_chemicals_001"
                     android:layout_gravity="center_horizontal"
                     android:layout_width="wrap_content"
-                    android:layout_height="150dp" />
+                    android:layout_height="140dp" />
 
                 <TextView
                     android:text="Chemicals"
                     android:textAlignment="center"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="@color/design_default_color_primary_dark"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:layout_width="wrap_content"
@@ -97,16 +97,16 @@
                     android:src="@drawable/m_glasswares_002"
                     android:layout_gravity="center_horizontal"
                     android:layout_width="wrap_content"
-                    android:layout_height="150dp" />
+                    android:layout_height="140dp" />
 
                 <TextView
                     android:text="Glasswares"
                     android:textAlignment="center"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="@color/design_default_color_primary_dark"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"/>
 
             </LinearLayout>
 
@@ -135,12 +135,12 @@
                     android:src="@drawable/m_perishables_003"
                     android:layout_gravity="center_horizontal"
                     android:layout_width="wrap_content"
-                    android:layout_height="150dp" />
+                    android:layout_height="140dp" />
 
                 <TextView
                     android:text="Perishables"
                     android:textAlignment="center"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="@color/design_default_color_primary_dark"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:layout_width="wrap_content"
@@ -172,12 +172,12 @@
                     android:src="@drawable/m_permenent_equ_004"
                     android:layout_gravity="center_horizontal"
                     android:layout_width="wrap_content"
-                    android:layout_height="150dp" />
+                    android:layout_height="140dp" />
 
                 <TextView
                     android:text="Permenent Equipments"
                     android:textAlignment="center"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="@color/design_default_color_primary_dark"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:layout_width="wrap_content"

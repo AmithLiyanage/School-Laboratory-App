@@ -56,24 +56,24 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void progressAnimation () {
-//        ProgressBarAnimation anim = new ProgressBarAnimation(this, progressBar, textView, 0f, 100f);
-//        anim.setDuration(6000);
-//        progressBar.setAnimation(anim);
-//        if (value == to) {
-//        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-//        referenceCanAccess = FirebaseDatabase.getInstance().getReference("Users");//.child(firebaseUser.toString()).child("approve")
-//
-//        //for check if user is null
-//        if (firebaseUser != null) {
-//            Log.v("Login Activity", "User is not null" + firebaseUser.getDisplayName());
-//            //Toast.makeText(LoginActivity.this, "User status : "+referenceCanAccess, Toast.LENGTH_SHORT).show();
-//            Intent intent = new Intent(this, NavigationActivity.class);
-//            startActivity(intent);
-//        }
-//        else {
-//            Log.v("Login Activity", "User is null");
-//            startActivity(new Intent(this, LoginActivity.class));//HomeActivity
-//        }
+        ProgressBarAnimation anim = new ProgressBarAnimation(this, progressBar, textView, 0f, 100f);
+        anim.setDuration(6000);
+        progressBar.setAnimation(anim);
+        //if (value == to) {
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        referenceCanAccess = FirebaseDatabase.getInstance().getReference("Users");//.child(firebaseUser.toString()).child("approve")
+
+        //for check if user is null
+        if (firebaseUser != null) {
+            Log.v("Login Activity", "User is not null" + firebaseUser.getDisplayName());
+            //Toast.makeText(LoginActivity.this, "User status : "+referenceCanAccess, Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, NavigationActivity.class);
+            startActivity(intent);
+        }
+        else {
+            Log.v("Login Activity", "User is null");
+            startActivity(new Intent(this, LoginActivity.class));//HomeActivity
+        }
     }
 }
 

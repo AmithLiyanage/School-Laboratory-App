@@ -36,7 +36,7 @@ public class NavigationActivity extends AppCompatActivity
         setContentView(R.layout.activity_navigation);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("HOME");
+        getSupportActionBar().setTitle("Smart Lab");
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,7 +56,7 @@ public class NavigationActivity extends AppCompatActivity
         fuser = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users");
 
-        recycleview = findViewById(R.id.btn_innav);
+        //recycleview = findViewById(R.id.btn_innav);
 
 //        try {
 //            recycleview.setOnClickListener(new View.OnClickListener() {
@@ -136,7 +136,7 @@ public class NavigationActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_slideshow) {
 
-        } else if (id == R.id.nav_chat) {
+        } else if (id == R.id.nav_profile) {
             openProfile();
         } else if (id == R.id.nav_chat) {
             openChatBox();
