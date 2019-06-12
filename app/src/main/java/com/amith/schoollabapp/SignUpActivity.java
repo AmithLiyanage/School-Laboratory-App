@@ -63,7 +63,7 @@ public class SignUpActivity extends AppCompatActivity {
                 String txt_email = email.getText().toString();
                 String txt_password = password.getText().toString();
                 String txt_cpassword = cpassword.getText().toString();
-                String txt_phoneNumber = password.getText().toString();
+                String txt_phoneNumber = phoneNumber.getText().toString();
 
                 if (TextUtils.isEmpty(txt_username) || TextUtils.isEmpty(txt_email) || TextUtils.isEmpty(txt_password) || TextUtils.isEmpty(txt_phoneNumber) || TextUtils.isEmpty(txt_cpassword)){
                     Toast.makeText(SignUpActivity.this, "All fields are required", Toast.LENGTH_SHORT).show();
@@ -72,13 +72,13 @@ public class SignUpActivity extends AppCompatActivity {
                 } else if (!(txt_cpassword.contentEquals(txt_password))){
                     Toast.makeText(SignUpActivity.this, "Password and Confirm Password are not match", Toast.LENGTH_SHORT).show();
                 } else {
-                    register(txt_username, txt_email, txt_password);
+                    register(txt_username, txt_email, txt_phoneNumber, txt_password);
                 }
             }
         });
     }
 
-    private void register(final String username, String email, String password){ // String phoneNumber not dded
+    private void register(final String username, final String email, final String phoneNumber, String password){ // String phoneNumber not dded
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
@@ -97,6 +97,8 @@ public class SignUpActivity extends AppCompatActivity {
                         hashMap.put("id", userId);
                         hashMap.put("username", username);
                         hashMap.put("imageURL", "default");
+                        hashMap.put("email", email);
+                        hashMap.put("phoneNumber", phoneNumber);
                         hashMap.put("approve", "no");
 //                        hashMap.put("status", "offline");
 //                        hashMap.put("search", username.toLowerCase());

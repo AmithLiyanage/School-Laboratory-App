@@ -6,11 +6,11 @@ public class User {
     private String username;
     private String imageURL;
     private String email;
-    private int phoneNumber;
+    private String  phoneNumber;
     private String status;
     private String search;
 
-    public User(String id, String username, String imageURL, String email, int phoneNumber, String status, String search) {
+    public User(String id, String username, String imageURL, String email, String  phoneNumber, String status, String search) {
         this.id = id;
         this.username = username;
         this.imageURL = imageURL;
@@ -55,11 +55,11 @@ public class User {
         this.email = email;
     }
 
-    public int getPhoneNumbe() {
+    public String  getPhoneNumbe() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
