@@ -23,5 +23,7 @@ public class ChemicalsActivity extends AppCompatActivity {
                 startActivity(new Intent(ChemicalsActivity.this, NavigationActivity.class).setFlags(Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP));
             }
         });
+
+
     }
 }
