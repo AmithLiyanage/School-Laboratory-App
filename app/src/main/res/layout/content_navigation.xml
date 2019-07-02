@@ -198,6 +198,7 @@
         <Button
             android:id="@+id/btn_chemicals"
             android:text="Chemicals"
+            android:textColor="@color/colorWhite"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
@@ -207,6 +208,7 @@
         <Button
             android:id="@+id/btn_glasswares"
             android:text="Glasswares"
+            android:textColor="@color/colorWhite"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
@@ -225,6 +227,7 @@
         <Button
             android:id="@+id/btn_perishables"
             android:text="Perishables"
+            android:textColor="@color/colorWhite"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
@@ -234,6 +237,7 @@
         <Button
             android:id="@+id/btn_permenent_equipments"
             android:text="Permenent"
+            android:textColor="@color/colorWhite"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
