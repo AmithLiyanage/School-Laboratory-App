@@ -25,7 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class NavigationActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    Button recycleview;
+    Button btnChemicalView;
 
     DatabaseReference reference;
     FirebaseUser fuser;
@@ -36,7 +36,7 @@ public class NavigationActivity extends AppCompatActivity
         setContentView(R.layout.activity_navigation);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("HOME");
+        getSupportActionBar().setTitle("Smart Lab");
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,20 +55,16 @@ public class NavigationActivity extends AppCompatActivity
 
         fuser = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users");
+        btnChemicalView = findViewById(R.id.btn_chemicals);
 
-        recycleview = findViewById(R.id.btn_innav);
-
-//        try {
-//            recycleview.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    startActivity(new Intent(NavigationActivity.this, RecyclerViewActivity.class));
-//                }
-//            });
-//        } catch (Exception e) {
-//            Toast.makeText(this, "Recycler btn : "+e, Toast.LENGTH_LONG).show();
-//        }
-
+        btnChemicalView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Log.v("Chemical Activity", "chemical btn");
+                Intent intent = new Intent(NavigationActivity.this, ChemicalsActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -136,7 +132,7 @@ public class NavigationActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_slideshow) {
 
-        } else if (id == R.id.nav_chat) {
+        } else if (id == R.id.nav_profile) {
             openProfile();
         } else if (id == R.id.nav_chat) {
             openChatBox();
@@ -163,4 +159,5 @@ public class NavigationActivity extends AppCompatActivity
         Intent intent = new Intent(this, ChatBoxActivity.class);
         startActivity(intent);
     }
+
 }
