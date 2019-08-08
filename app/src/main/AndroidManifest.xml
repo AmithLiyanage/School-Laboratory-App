@@ -16,7 +16,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ChemicalsActivity"></activity>
+        <activity android:name=".GlasswareActivity"></activity>
+        <activity android:name=".ChemicalsActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".MessageActivity" />
         <activity android:name=".ChatBoxActivity" />
