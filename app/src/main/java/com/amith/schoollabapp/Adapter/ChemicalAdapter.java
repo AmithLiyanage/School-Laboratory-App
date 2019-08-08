@@ -14,12 +14,12 @@ import com.amith.schoollabapp.R;
 
 import java.util.List;
 
-public class ChemicalAdapter extends RecyclerView.Adapter<ChemicalAdapter.ViewHolder>{
+public class ChemicalAdapter extends RecyclerView.Adapter<ChemicalAdapter.ViewHolder> {
 
     private Context mContext;
     private List<Chemical> mChemicals;
 
-    public ChemicalAdapter(Context mContext, List<Chemical> mUsers){
+    public ChemicalAdapter(Context mContext, List<Chemical> mUsers) {
         this.mChemicals = mUsers;
         this.mContext = mContext;
     }
@@ -27,9 +27,7 @@ public class ChemicalAdapter extends RecyclerView.Adapter<ChemicalAdapter.ViewHo
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view;
-        LayoutInflater mInflater = LayoutInflater.from(mContext);
-        view = mInflater.inflate(R.layout.chemical_item, parent, false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.chemical_item, parent, false);
         return new ViewHolder(view);
     }
 
@@ -38,7 +36,7 @@ public class ChemicalAdapter extends RecyclerView.Adapter<ChemicalAdapter.ViewHo
 
         Chemical chemical = mChemicals.get(position);
         holder.chemical_name.setText(chemical.getChemicalName());
-        holder.available.setText(chemical.getAvailable());
+        holder.available.setText(chemical.getAvailable().toString());
         holder.measurement.setText(chemical.getMeasurement());
 
     }
@@ -48,7 +46,7 @@ public class ChemicalAdapter extends RecyclerView.Adapter<ChemicalAdapter.ViewHo
         return mChemicals.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         public TextView chemical_name;
         public TextView available;
@@ -63,3 +61,4 @@ public class ChemicalAdapter extends RecyclerView.Adapter<ChemicalAdapter.ViewHo
         }
     }
 }
+
