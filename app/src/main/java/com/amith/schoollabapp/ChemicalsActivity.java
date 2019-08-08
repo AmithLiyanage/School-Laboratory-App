@@ -8,10 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.amith.schoollabapp.Adapter.ChemicalAdapter;
@@ -32,8 +29,6 @@ public class ChemicalsActivity extends AppCompatActivity {
     private ChemicalAdapter chemicalAdapter;
     private RecyclerView.LayoutManager layoutManager;
 
-    //TextView chemicalName, quantity, measurement;
-
     private ArrayList<Chemical> mChemicals;
 
     @Override
@@ -52,15 +47,12 @@ public class ChemicalsActivity extends AppCompatActivity {
         });
 
         View view = View.inflate(getBaseContext(), R.layout.activity_chemicals, toolbar);
+        //View view = View.inflate(getBaseContext(), R.layout.activity_chemicals, recyclerView);
         recyclerView = view.findViewById(R.id.recycler_chemical_view);
         recyclerView.setHasFixedSize(true);
 
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-
-        //chemicalName = findViewById(R.id.chemical_name);
-        //quantity = findViewById(R.id.chemical_avaliable);
-        //measurement = findViewById(R.id.chemical_measurement);
 
         mChemicals = new ArrayList<>();
 
@@ -70,18 +62,23 @@ public class ChemicalsActivity extends AppCompatActivity {
 
     private void readChemicals() {
 
+        Toast.makeText(ChemicalsActivity.this.getBaseContext(), "0", Toast.LENGTH_SHORT);
         final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("glassware");
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                mChemicals.clear();
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-//                    Chemical chemical = snapshot.getValue(Chemical.class);
 
-//                    assert chemical != null;
-//                    mChemicals.add(chemical);
+                mChemicals.clear();
+
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Chemical chemical = snapshot.getValue(Chemical.class);
+
+                    Toast.makeText(ChemicalsActivity.this.getBaseContext(), "1", Toast.LENGTH_SHORT);
+                    assert chemical != null;
+                    mChemicals.add(chemical);
+                    Toast.makeText(ChemicalsActivity.this.getBaseContext(), "2", Toast.LENGTH_LONG);
                 }
 
                 try {
