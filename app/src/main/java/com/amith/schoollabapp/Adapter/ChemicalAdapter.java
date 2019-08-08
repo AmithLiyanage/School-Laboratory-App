@@ -35,9 +35,9 @@ public class ChemicalAdapter extends RecyclerView.Adapter<ChemicalAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         Chemical chemical = mChemicals.get(position);
-        holder.chemical_name.setText(chemical.getChemicalName());
-        holder.available.setText(chemical.getAvailable().toString());
-        holder.measurement.setText(chemical.getMeasurement());
+//        holder.chemical_name.setText(chemical.getChemicalName());
+//        holder.available.setText(chemical.getAvailable().toString());
+//        holder.measurement.setText(chemical.getMeasurement());
 
     }
 
@@ -56,7 +56,7 @@ public class ChemicalAdapter extends RecyclerView.Adapter<ChemicalAdapter.ViewHo
             super(itemView);
 
             chemical_name = itemView.findViewById(R.id.chemical_name);
-            available = itemView.findViewById(R.id.chemical_available);
+            available = itemView.findViewById(R.id.chemical_avaliable);
             measurement = itemView.findViewById(R.id.chemical_measurement);
         }
     }

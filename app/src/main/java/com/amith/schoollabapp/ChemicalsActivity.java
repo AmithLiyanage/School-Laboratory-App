@@ -25,7 +25,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ChemicalsActivity extends AppCompatActivity {
 
@@ -35,7 +34,7 @@ public class ChemicalsActivity extends AppCompatActivity {
 
     //TextView chemicalName, quantity, measurement;
 
-    private List<Chemical> mChemicals;
+    private ArrayList<Chemical> mChemicals;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,9 +58,9 @@ public class ChemicalsActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-//        chemicalName = findViewById(R.id.chemical_name);
-//        quantity = findViewById(R.id.chemical_avaliable);
-//        measurement = findViewById(R.id.chemical_measurement);
+        //chemicalName = findViewById(R.id.chemical_name);
+        //quantity = findViewById(R.id.chemical_avaliable);
+        //measurement = findViewById(R.id.chemical_measurement);
 
         mChemicals = new ArrayList<>();
 
@@ -79,10 +78,10 @@ public class ChemicalsActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 mChemicals.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Chemical chemical = snapshot.getValue(Chemical.class);
+//                    Chemical chemical = snapshot.getValue(Chemical.class);
 
-                    assert chemical != null;
-                    mChemicals.add(chemical);
+//                    assert chemical != null;
+//                    mChemicals.add(chemical);
                 }
 
                 try {
