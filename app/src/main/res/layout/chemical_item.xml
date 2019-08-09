@@ -1,63 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="5dp">
 
-    <TextView
-        android:id="@+id/chemical_name"
-        android:layout_width="150dp"
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="308dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/chemical_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="100dp"
+                android:layout_marginBottom="10dp"
+                android:text="Chemical Name"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_marginRight="10dp">
+
+            <TextView
+                android:id="@+id/chemical_avaliable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_toStartOf="@+id/chemical_measurement"
+                android:text="200"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/chemical_measurement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:text="g"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="Chemical Name"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/chemical_avaliable"
-        app:layout_constraintEnd_toStartOf="@+id/chemical_avaliable"
-        app:layout_constraintHorizontal_bias="0.101"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        android:gravity="right">
 
-    <TextView
-        android:id="@+id/chemical_avaliable"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_toEndOf="@+id/chemical_name"
-        android:text="200"
-        android:textSize="20dp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="344dp" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/colorLightBlue"
+            android:text="Recerve" />
 
-    <TextView
-        android:id="@+id/chemical_measurement"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:layout_toEndOf="@+id/chemical_avaliable"
-        android:text="g"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/chemical_avaliable"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/chemical_avaliable"
-        app:layout_constraintTop_toTopOf="parent" />
+    </LinearLayout>
 
-    <!--<TextView-->
-        <!--android:id="@+id/availability"-->
-        <!--android:layout_width="250dp"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_below="@+id/chemical_name"-->
-        <!--android:layout_marginLeft="20dp"-->
-        <!--android:layout_marginBottom="20dp"-->
-        <!--android:layout_toTopOf="@+id/chemical_available"-->
-        <!--android:text="avaliable"-->
-        <!--android:textSize="15dp" />-->
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
