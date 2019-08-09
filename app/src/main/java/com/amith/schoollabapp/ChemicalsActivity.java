@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Toast;
 
@@ -46,11 +47,35 @@ public class ChemicalsActivity extends AppCompatActivity {
             }
         });
 
+        //View view = View.inflate(getBaseContext(), R.layout.activity_chemicals, toolbar);
+//        public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+//            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.menu_item, parent, false);
+//            return new ItemViewHolder(view);
+//        }
+
+        //View view = inflater.inflate(R.layout.fragment_user, container, false);
+
+//        recyclerView = view.findViewById(R.id.recycler_view);
+//        recyclerView.setHasFixedSize(true);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+//        @NonNull
+//        @Override
+//        public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+//            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.menu_item, parent, false);
+//            return new ItemViewHolder(view);
+//        }
+//
+//
+//        View view = View.inflate(R.layout.activity_chemicals, parent, false);
+        //View view = View.inflate
         View view = View.inflate(getBaseContext(), R.layout.activity_chemicals, toolbar);
-        //View view = View.inflate(getBaseContext(), R.layout.activity_chemicals, recyclerView);
+
+
         recyclerView = view.findViewById(R.id.recycler_chemical_view);
         recyclerView.setHasFixedSize(true);
 
+        //layoutManager = new LinearLayoutManager(this);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
@@ -58,13 +83,15 @@ public class ChemicalsActivity extends AppCompatActivity {
 
         readChemicals();
 
+        //return view;
+
     }
 
     private void readChemicals() {
 
         Toast.makeText(ChemicalsActivity.this.getBaseContext(), "0", Toast.LENGTH_SHORT);
         final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("glassware");
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("chemicals");
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
