@@ -4,11 +4,11 @@ public class Chemical {
 
     private String id;
     private String chemicalName;
-    private String available;
-    private String recomended;
+    private Long available;
+    private Long recomended;
     private String measurement;
 
-    public Chemical(String id, String chemicalName, String available, String recomended, String measurement) {
+    public Chemical(String id, String chemicalName, Long available, Long recomended, String measurement) {
         this.id = id;
         this.chemicalName = chemicalName;
         this.available = available;
@@ -35,19 +35,19 @@ public class Chemical {
         this.chemicalName = chemicalName;
     }
 
-    public String getAvailable() {
+    public Long getAvailable() {
         return available;
     }
 
-    public void setAvailable(String available) {
+    public void setAvailable(Long available) {
         this.available = available;
     }
 
-    public String getRecomended() {
+    public Long getRecomended() {
         return recomended;
     }
 
-    public void setRecomended(String recomended) {
+    public void setRecomended(Long recomended) {
         this.recomended = recomended;
     }
 

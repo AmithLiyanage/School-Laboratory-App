@@ -25,7 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class NavigationActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    Button btnChemicalView;
+    Button btnChemicalView, btnGlasswareView;
 
     DatabaseReference reference;
     FirebaseUser fuser;
@@ -56,12 +56,21 @@ public class NavigationActivity extends AppCompatActivity
         fuser = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users");
         btnChemicalView = findViewById(R.id.btn_chemicals);
+        btnGlasswareView = findViewById(R.id.btn_glasswares);
 
         btnChemicalView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Log.v("Chemical Activity", "chemical btn");
                 Intent intent = new Intent(NavigationActivity.this, ChemicalsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnGlasswareView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(NavigationActivity.this, GlasswareActivity.class);
                 startActivity(intent);
             }
         });
