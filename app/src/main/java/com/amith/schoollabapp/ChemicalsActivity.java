@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Toast;
@@ -69,19 +70,20 @@ public class ChemicalsActivity extends AppCompatActivity {
 //
 //        View view = View.inflate(R.layout.activity_chemicals, parent, false);
         //View view = View.inflate
-        View view = View.inflate(getBaseContext(), R.layout.activity_chemicals, toolbar);
-
-
-        recyclerView = view.findViewById(R.id.recycler_chemical_view);
+//        View view = View.inflate(getBaseContext(), R.layout.activity_chemicals, toolbar);
+//
+//
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_chemical_view);
         recyclerView.setHasFixedSize(true);
 
         //layoutManager = new LinearLayoutManager(this);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-
+//        chemicalAdapter = new ChemicalAdapter(getBaseContext(), mChemicals);
+//        recyclerView.setAdapter(chemicalAdapter);
         mChemicals = new ArrayList<>();
 
-        readChemicals();
+       readChemicals();
 
         //return view;
 
@@ -104,9 +106,11 @@ public class ChemicalsActivity extends AppCompatActivity {
 
                     Toast.makeText(ChemicalsActivity.this.getBaseContext(), "1", Toast.LENGTH_SHORT);
                     assert chemical != null;
-                    mChemicals.add(chemical);
+//                    Log.d("dsa", ""+chemical.getItem_name());
+                      mChemicals.add(chemical);
                     Toast.makeText(ChemicalsActivity.this.getBaseContext(), "2", Toast.LENGTH_LONG);
                 }
+//                mChemicals.add(new Chemical("dsad","chem name", (long)2,(long)2.0,"g"));
 
                 try {
                     chemicalAdapter = new ChemicalAdapter(getBaseContext(), mChemicals);

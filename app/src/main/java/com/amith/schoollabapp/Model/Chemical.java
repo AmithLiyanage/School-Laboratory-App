@@ -1,22 +1,34 @@
 package com.amith.schoollabapp.Model;
 
+import android.util.Log;
+
 public class Chemical {
 
     private String id;
-    private String chemicalName;
+    private String item_name;
     private Long available;
     private Long recomended;
     private String measurement;
 
-    public Chemical(String id, String chemicalName, Long available, Long recomended, String measurement) {
+
+    public Chemical(String id, String item_name, Long available, Long recomended, String measurement) {
         this.id = id;
-        this.chemicalName = chemicalName;
+        this.item_name = item_name;
         this.available = available;
         this.recomended = recomended;
         this.measurement = measurement;
     }
 
     public Chemical() {
+    }
+
+
+    public String getItem_name() {
+        return item_name;
+    }
+//
+    public void setItem_name(String item_name) {
+        this.item_name = item_name;
     }
 
     public String getId() {
@@ -27,12 +39,12 @@ public class Chemical {
         this.id = id;
     }
 
-    public String getChemicalName() {
-        return chemicalName;
+    public String getChemicalName2() {
+        return item_name;
     }
 
-    public void setChemicalName(String chemicalName) {
-        this.chemicalName = chemicalName;
+    public void setChemicalName(String item_name) {
+        this.item_name = item_name;
     }
 
     public Long getAvailable() {
