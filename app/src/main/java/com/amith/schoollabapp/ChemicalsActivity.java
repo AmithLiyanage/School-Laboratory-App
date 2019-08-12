@@ -44,7 +44,7 @@ public class ChemicalsActivity extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ChemicalsActivity.this, NavigationActivity.class));//.setFlags(Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP)
+                startActivity(new Intent(ChemicalsActivity.this, NavigationActivity.class).setFlags(Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP));
             }
         });
 
@@ -79,12 +79,17 @@ public class ChemicalsActivity extends AppCompatActivity {
         View view = View.inflate(getBaseContext(), R.layout.activity_chemicals, toolbar);
 
         recyclerView = view.findViewById(R.id.recycler_chemical_view);
+//        View view = View.inflate(getBaseContext(), R.layout.activity_chemicals, toolbar);
+//
+//
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_chemical_view);
         recyclerView.setHasFixedSize(true);
 
         //layoutManager = new LinearLayoutManager(this);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-
+//        chemicalAdapter = new ChemicalAdapter(getBaseContext(), mChemicals);
+//        recyclerView.setAdapter(chemicalAdapter);
         mChemicals = new ArrayList<>();
 
         readChemicals();
@@ -113,7 +118,11 @@ public class ChemicalsActivity extends AppCompatActivity {
                     mChemicals.add(chemical);
 //                    Log.v( "chemical name", chemical.getChemicalName());
 //                    Toast.makeText(ChemicalsActivity.this.getBaseContext(), "2", Toast.LENGTH_LONG);
+//                    Log.d("dsa", ""+chemical.getItem_name());
+                      mChemicals.add(chemical);
+                    Toast.makeText(ChemicalsActivity.this.getBaseContext(), "2", Toast.LENGTH_LONG);
                 }
+//                mChemicals.add(new Chemical("dsad","chem name", (long)2,(long)2.0,"g"));
 
                 try {
                     chemicalAdapter = new ChemicalAdapter(getBaseContext(), mChemicals);

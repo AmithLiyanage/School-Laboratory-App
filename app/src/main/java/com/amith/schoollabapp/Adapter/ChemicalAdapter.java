@@ -1,6 +1,7 @@
 package com.amith.schoollabapp.Adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,8 +35,10 @@ public class ChemicalAdapter extends RecyclerView.Adapter<ChemicalAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
+
         Chemical chemical = mChemicals.get(position);
-        holder.chemical_name.setText(chemical.getChemicalName());
+        Log.d("dsa2", ""+chemical.getRecomended());
+       holder.chemical_name.setText(chemical.getChemicalName2());
         holder.available.setText(chemical.getAvailable().toString());
         holder.measurement.setText(chemical.getMeasurement());
 
