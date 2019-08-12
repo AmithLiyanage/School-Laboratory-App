@@ -19,8 +19,8 @@ public class ChemicalAdapter extends RecyclerView.Adapter<ChemicalAdapter.ViewHo
     private Context mContext;
     private List<Chemical> mChemicals;
 
-    public ChemicalAdapter(Context mContext, List<Chemical> mUsers) {
-        this.mChemicals = mUsers;
+    public ChemicalAdapter(Context mContext, List<Chemical> mChemical) {
+        this.mChemicals = mChemical;
         this.mContext = mContext;
     }
 

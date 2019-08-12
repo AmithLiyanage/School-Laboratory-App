@@ -52,7 +52,7 @@ public class ChatBoxActivity extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ChatBoxActivity.this, NavigationActivity.class).setFlags(Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP));
+                startActivity(new Intent(ChatBoxActivity.this, NavigationActivity.class));//.setFlags(Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP)
             }
         });
 

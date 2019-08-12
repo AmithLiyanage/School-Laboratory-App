@@ -62,7 +62,7 @@ public class NavigationActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 //Log.v("Chemical Activity", "chemical btn");
-                Intent intent = new Intent(NavigationActivity.this, ChemicalsActivity.class);
+                Intent intent = new Intent(NavigationActivity.this, ChemicalsActivity.class).setFlags(Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP);//new one previous top
                 startActivity(intent);
             }
         });
@@ -70,7 +70,7 @@ public class NavigationActivity extends AppCompatActivity
         btnGlasswareView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(NavigationActivity.this, GlasswareActivity.class);
+                Intent intent = new Intent(NavigationActivity.this, GlasswareActivity.class).setFlags(Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP);
                 startActivity(intent);
             }
         });
@@ -116,7 +116,7 @@ public class NavigationActivity extends AppCompatActivity
 
             case R.id.action_profile:
                 FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(NavigationActivity.this, ProfileActivity.class));
+                startActivity(new Intent(NavigationActivity.this, ProfileActivity.class).setFlags(Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP));
 //                finish();
                 return true;
 

@@ -3,14 +3,17 @@ package com.amith.schoollabapp.Model;
 public class User {
 
     private String id;
+
+    private String nameWithInitial;
     private String username;
     private String imageURL;
     private String email;
-    private String  phoneNumber;
+    private String phoneNumber;
+    private String gender;
     private String status;
     private String search;
 
-    public User(String id, String username, String imageURL, String email, String  phoneNumber, String status, String search) {
+    public User(String id, String nameWithInitial, String username, String imageURL, String email, String  phoneNumber, String gender, String status, String search) {
         this.id = id;
         this.username = username;
         this.imageURL = imageURL;
@@ -29,6 +32,14 @@ public class User {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getNameWithInitial() {
+        return nameWithInitial;
+    }
+
+    public void setNameWithInitial(String nameWithInitial) {
+        this.nameWithInitial = nameWithInitial;
     }
 
     public String getUsername() {
@@ -55,12 +66,20 @@ public class User {
         this.email = email;
     }
 
-    public String  getPhoneNumbe() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public String getStatus() {

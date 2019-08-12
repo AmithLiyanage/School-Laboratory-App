@@ -97,11 +97,13 @@ public class SignUpActivity extends AppCompatActivity {
                     radioButtonGender = findViewById(radioId);
 
 //                    if (radioId == R.id.radio_male) {
-//                        strGender = radioButtonGender.getText().toString();
+//                        //strGender = radioButtonGender.getText().toString();
+//                        strGender = strMale;
 //                        Log.e("Gender in radio", "1");
 //                        Toast.makeText(SignUpActivity.this, "Gender = 1", Toast.LENGTH_SHORT).show();
 //                    } else {
-//                        strGender = radioButtonGender.getText().toString();
+//                        //strGender = radioButtonGender.getText().toString();
+//                        strGender = strFemale;
 //                        Toast.makeText(SignUpActivity.this, "Gender = 2", Toast.LENGTH_SHORT).show();
 //                        Log.e("Gender in radio", "2");
 //                    }
@@ -141,10 +143,12 @@ public class SignUpActivity extends AppCompatActivity {
 
             if (radioId == R.id.radio_male) {
                 strGender = radioButtonGender.getText().toString();
+                //strGender = strMale;
                 Log.e("Gender in radio", "1");
                 Toast.makeText(SignUpActivity.this, "Gender = 1", Toast.LENGTH_SHORT).show();
             } else {
                 strGender = radioButtonGender.getText().toString();
+                //strGender = strFemale;
                 Toast.makeText(SignUpActivity.this, "Gender = 2", Toast.LENGTH_SHORT).show();
                 Log.e("Gender in radio", "2");
             }

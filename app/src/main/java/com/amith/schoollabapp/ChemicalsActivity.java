@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Toast;
@@ -43,7 +44,7 @@ public class ChemicalsActivity extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ChemicalsActivity.this, NavigationActivity.class).setFlags(Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP));
+                startActivity(new Intent(ChemicalsActivity.this, NavigationActivity.class));//.setFlags(Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP)
             }
         });
 
@@ -69,8 +70,13 @@ public class ChemicalsActivity extends AppCompatActivity {
 //
 //        View view = View.inflate(R.layout.activity_chemicals, parent, false);
         //View view = View.inflate
-        View view = View.inflate(getBaseContext(), R.layout.activity_chemicals, toolbar);
 
+        Log.v( "View load", "when loading");
+
+//        LayoutInflater inflater = LayoutInflater.from(getBaseContext());
+//        View view = inflater.inflate(R.layout.activity_chemicals, recyclerView, true);
+
+        View view = View.inflate(getBaseContext(), R.layout.activity_chemicals, toolbar);
 
         recyclerView = view.findViewById(R.id.recycler_chemical_view);
         recyclerView.setHasFixedSize(true);
@@ -89,7 +95,7 @@ public class ChemicalsActivity extends AppCompatActivity {
 
     private void readChemicals() {
 
-        Toast.makeText(ChemicalsActivity.this.getBaseContext(), "0", Toast.LENGTH_SHORT);
+        //Toast.makeText(ChemicalsActivity.this.getBaseContext(), "0", Toast.LENGTH_SHORT);
         final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("chemicals");
 
@@ -102,10 +108,11 @@ public class ChemicalsActivity extends AppCompatActivity {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Chemical chemical = snapshot.getValue(Chemical.class);
 
-                    Toast.makeText(ChemicalsActivity.this.getBaseContext(), "1", Toast.LENGTH_SHORT);
+                    //Toast.makeText(ChemicalsActivity.this.getBaseContext(), "1", Toast.LENGTH_SHORT);
                     assert chemical != null;
                     mChemicals.add(chemical);
-                    Toast.makeText(ChemicalsActivity.this.getBaseContext(), "2", Toast.LENGTH_LONG);
+//                    Log.v( "chemical name", chemical.getChemicalName());
+//                    Toast.makeText(ChemicalsActivity.this.getBaseContext(), "2", Toast.LENGTH_LONG);
                 }
 
                 try {
