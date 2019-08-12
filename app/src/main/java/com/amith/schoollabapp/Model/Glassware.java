@@ -3,15 +3,15 @@ package com.amith.schoollabapp.Model;
 public class Glassware {
 
     private String id;
-    private String glasswareName;
+    private String item_name;
     private Long quentity;
     private Long available;
     private Long recomended;
     private String measurement;
 
-    public Glassware(String id, String glasswareName, Long quentity, Long available, Long recomended, String measurement) {
+    public Glassware(String id, String item_name, Long quentity, Long available, Long recomended, String measurement) {
         this.id = id;
-        this.glasswareName = glasswareName;
+        this.item_name = item_name;
         this.quentity = quentity;
         this.available = available;
         this.recomended = recomended;
@@ -29,12 +29,12 @@ public class Glassware {
         this.id = id;
     }
 
-    public String getGlasswareName() {
-        return glasswareName;
+    public String getItem_name() {
+        return item_name;
     }
 
-    public void setGlasswareName(String glasswareName) {
-        this.glasswareName = glasswareName;
+    public void setItem_name(String item_name) {
+        this.item_name = item_name;
     }
 
     public Long getQuentity() {

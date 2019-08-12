@@ -1,30 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ChemicalsActivity">
+    tools:context=".ChemicalsActivity"
+    android:background="#dddddd">
     <include
         android:id="@+id/toolbar"
         layout="@layout/bar_layout"/>
 
-    <!--<androidx.core.widget.NestedScrollView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent">-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_glassware_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
-        <!--<androidx.recyclerview.widget.RecyclerView-->
-            <!--android:id="@+id/recycler_glassware_view"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"/>-->
-
-    <ListView
-        android:layout_below="@id/toolbar"
-        android:id="@+id/glassware_list_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
-    <!--</androidx.core.widget.NestedScrollView>-->
-
-</RelativeLayout>
+</LinearLayout>

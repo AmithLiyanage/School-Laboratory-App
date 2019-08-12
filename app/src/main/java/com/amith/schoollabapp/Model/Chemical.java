@@ -1,7 +1,5 @@
 package com.amith.schoollabapp.Model;
 
-import android.util.Log;
-
 public class Chemical {
 
     private String id;
@@ -22,15 +20,6 @@ public class Chemical {
     public Chemical() {
     }
 
-
-    public String getItem_name() {
-        return item_name;
-    }
-//
-    public void setItem_name(String item_name) {
-        this.item_name = item_name;
-    }
-
     public String getId() {
         return id;
     }
@@ -39,11 +28,11 @@ public class Chemical {
         this.id = id;
     }
 
-    public String getChemicalName2() {
+    public String getItem_name() {
         return item_name;
     }
 
-    public void setChemicalName(String item_name) {
+    public void setItem_name(String item_name) {
         this.item_name = item_name;
     }
 

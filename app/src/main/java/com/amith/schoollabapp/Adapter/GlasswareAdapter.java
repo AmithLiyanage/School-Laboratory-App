@@ -36,7 +36,7 @@ public class GlasswareAdapter extends RecyclerView.Adapter<GlasswareAdapter.View
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         Glassware glassware = mGlassware.get(position);
-        holder.glassware_name.setText(glassware.getGlasswareName());
+        holder.glassware_name.setText(glassware.getItem_name());
         holder.available.setText(glassware.getAvailable().toString());
         holder.measurement.setText(glassware.getMeasurement());
 
