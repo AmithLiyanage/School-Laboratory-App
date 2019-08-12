@@ -16,7 +16,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".GlasswareActivity"></activity>
+        <activity android:name=".PermanentEquipmentActivity"></activity>
+        <activity android:name=".PerishableActivity" />
+        <activity android:name=".GlasswareActivity" />
         <activity android:name=".ChemicalsActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".MessageActivity" />
