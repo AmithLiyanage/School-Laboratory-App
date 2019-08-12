@@ -80,6 +80,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     private void register(final String username, final String email, final String phoneNumber, String password){ // String phoneNumber not dded
         auth.createUserWithEmailAndPassword(email, password)
+
             .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
