@@ -16,6 +16,7 @@ import androidx.appcompat.widget.AppCompatRadioButton;
 import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,6 +24,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
 import java.util.HashMap;
@@ -39,6 +42,8 @@ public class SignUpActivity extends AppCompatActivity {
 
     FirebaseAuth auth;
     DatabaseReference reference;
+    private DatabaseReference UserRef;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +67,11 @@ public class SignUpActivity extends AppCompatActivity {
         password = findViewById(R.id.signup_password);
         cpassword = findViewById(R.id.signup_confirmPassword);
         phoneNumber = findViewById(R.id.signup_phoneNumber);
-        btnSignUp = findViewById(R.id.signup_btnSignUp);  //SignUp Button
+
+        btnSignUp =  findViewById(R.id.signup_btnSignUp);  //SignUp Button
+
+
+
 
         auth = FirebaseAuth.getInstance();
 
@@ -169,6 +178,10 @@ public class SignUpActivity extends AppCompatActivity {
                         firebaseUser.updateProfile(profileUpdates);
                         String userId = firebaseUser.getUid();
 
+                        final String currenyUserId=auth.getCurrentUser().getUid();
+
+                        UserRef= FirebaseDatabase.getInstance().getReference().child("Users");
+
                         reference = FirebaseDatabase.getInstance().getReference("Users").child(userId);
 
                         HashMap<String, Object> hashMap = new HashMap<>();
@@ -187,11 +200,29 @@ public class SignUpActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()){
-                                    Toast.makeText(SignUpActivity.this, "Registration Successful !", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);//MainActivity.class.I think this is after the confirm signUp
-                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | intent.FLAG_ACTIVITY_NEW_TASK);
-                                    startActivity(intent);
-                                    finish();
+
+                                    FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener( SignUpActivity.this,  new OnSuccessListener<InstanceIdResult>() {
+                                        @Override
+                                        public void onSuccess(InstanceIdResult instanceIdResult) {
+                                            String mToken = instanceIdResult.getToken();
+                                            Log.e("Token",mToken);
+                                            UserRef.child(currenyUserId).child("device_token").setValue(mToken).
+                                                    addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                        @Override
+                                                        public void onComplete(@NonNull Task<Void> task) {
+                                                            if(task.isSuccessful())
+                                                            {
+                                                                Toast.makeText(SignUpActivity.this, "Registration Successful !", Toast.LENGTH_SHORT).show();
+                                                                Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);//MainActivity.class.I think this is after the confirm signUp
+                                                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | intent.FLAG_ACTIVITY_NEW_TASK);
+                                                                startActivity(intent);
+                                                                finish();
+                                                            }
+                                                        }
+                                                    });
+                                        }
+                                    });
+
                                 }
                             }
                         });

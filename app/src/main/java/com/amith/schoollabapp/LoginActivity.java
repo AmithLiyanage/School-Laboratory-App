@@ -163,7 +163,9 @@ public class LoginActivity extends AppCompatActivity {
 //                                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | intent.FLAG_ACTIVITY_NEW_TASK);
 //                                            startActivity(intent);
 
+
                                             authStateListener.onAuthStateChanged(FirebaseAuth.getInstance());
+
                                             pd.dismiss();
 
                                         } else {

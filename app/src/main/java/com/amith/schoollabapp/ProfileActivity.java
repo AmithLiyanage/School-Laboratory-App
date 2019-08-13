@@ -44,6 +44,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     DatabaseReference reference, referenceChild;
     FirebaseUser fuser;
+    FirebaseAuth auth;
 
     StorageReference storageReference;
     private static final int IMAGE_REQUEST = 1;
@@ -65,24 +66,23 @@ public class ProfileActivity extends AppCompatActivity {
                 startActivity(new Intent(ProfileActivity.this, NavigationActivity.class));
             }
         });
-
+//
+        auth = FirebaseAuth.getInstance();
         image_profile = findViewById(R.id.profile_image);
         image_profile.setImageResource(R.drawable.pp_icon);
         username = findViewById(R.id.username);
 
-        //firebase connections
-        fuser = FirebaseAuth.getInstance().getCurrentUser();
-        //reference = FirebaseDatabase.getInstance().getReference("Users");
-        reference = FirebaseDatabase.getInstance().getReference("Users").child(fuser.getUid());
+//        firebase connections
+       fuser =auth.getCurrentUser();
+        reference = FirebaseDatabase.getInstance().getReference("Users");
+      reference = FirebaseDatabase.getInstance().getReference("Users").child(fuser.getUid());
 
-
-        Log.v("Profile Activity","Fuser : " + fuser);
         //referenceChild = FirebaseDatabase.getInstance().getReference("Users").child(fuser.getUid());//
-        Log.v("Profile Activity","Fuser : " + reference.toString());
+//        Log.v("Profile Activity","Fuser : " + reference.toString());
 //        Log.v("Profile Activity","Fuser : " + fuser.getUid());
-
+//
         storageReference = FirebaseStorage.getInstance().getReference("uploads");
-
+//
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

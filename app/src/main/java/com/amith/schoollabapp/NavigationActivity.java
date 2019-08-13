@@ -137,16 +137,18 @@ public class NavigationActivity extends AppCompatActivity
         switch (item.getItemId()){
 
             case R.id.action_profile:
-                FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(NavigationActivity.this, ProfileActivity.class).setFlags(Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP));
-//                finish();
-                return true;
+               // FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(NavigationActivity.this, ProfileActivity.class));
+//                   finish();
+//                   break;
+               return true;
 
             case R.id.action_logout:
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(NavigationActivity.this, LoginActivity.class));
                 finish();
-                return true;
+//                break;
+              return true;
         }
         return false;
     }
