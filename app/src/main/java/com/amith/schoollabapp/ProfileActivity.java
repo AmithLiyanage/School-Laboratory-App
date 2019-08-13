@@ -40,7 +40,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class ProfileActivity extends AppCompatActivity {
 
     CircleImageView image_profile;
-    TextView username;
+    TextView username, userId, userNameWithInitial, userEmail, userPhoneNumber, userGender;
 
     DatabaseReference reference, referenceChild;
     FirebaseUser fuser;
@@ -71,11 +71,16 @@ public class ProfileActivity extends AppCompatActivity {
         image_profile = findViewById(R.id.profile_image);
         image_profile.setImageResource(R.drawable.pp_icon);
         username = findViewById(R.id.username);
+        //userId = findViewById(R.id.user_id);
+        userNameWithInitial = findViewById(R.id.user_nameWithInitial);
+        userEmail = findViewById(R.id.user_email);
+        userPhoneNumber = findViewById(R.id.user_phone_no);
+        userGender = findViewById(R.id.user_gender);
 
 //        firebase connections
-       fuser =auth.getCurrentUser();
-        reference = FirebaseDatabase.getInstance().getReference("Users");
-      reference = FirebaseDatabase.getInstance().getReference("Users").child(fuser.getUid());
+        fuser =auth.getCurrentUser();
+        //reference = FirebaseDatabase.getInstance().getReference("Users");
+        reference = FirebaseDatabase.getInstance().getReference("Users").child(fuser.getUid());
 
         //referenceChild = FirebaseDatabase.getInstance().getReference("Users").child(fuser.getUid());//
 //        Log.v("Profile Activity","Fuser : " + reference.toString());
@@ -87,11 +92,16 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Log.v("Profile Activity","Called onDataChange");
-                Toast.makeText(ProfileActivity.this, "pp", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(ProfileActivity.this, "pp", Toast.LENGTH_SHORT).show();
 
                 try{
                     User user = dataSnapshot.getValue(User.class);
                     username.setText(user.getUsername());
+                    //userId.setText(user.getId());
+                    userNameWithInitial.setText(user.getNameWithInitial());
+                    userEmail.setText(user.getEmail());
+                    userPhoneNumber.setText(user.getPhoneNumber());
+                    userGender.setText(user.getGender());
 
                     if(user.getImageURL().equals("default")){
                         Log.v("Profile Activity","Came to image url default");
