@@ -6,6 +6,7 @@ public class User {
 
     private String nameWithInitial;
     private String username;
+    private String approve;
     private String imageURL;
     private String email;
     private String phoneNumber;
@@ -13,12 +14,15 @@ public class User {
     private String status;
     private String search;
 
-    public User(String id, String nameWithInitial, String username, String imageURL, String email, String  phoneNumber, String gender, String status, String search) {
+    public User(String id, String nameWithInitial, String username, String approve, String imageURL, String email, String  phoneNumber, String gender, String status, String search) {
         this.id = id;
+        this.nameWithInitial = nameWithInitial;
         this.username = username;
+        this.approve = approve;
         this.imageURL = imageURL;
         this.email = email;
         this.phoneNumber = phoneNumber;
+        this.gender = gender;
         this.status = status;
         this.search = search;
     }
@@ -48,6 +52,14 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getApprove() {
+        return approve;
+    }
+
+    public void setApprove(String approve) {
+        this.approve = approve;
     }
 
     public String getImageURL() {
