@@ -1,22 +1,24 @@
 package com.amith.schoollabapp.Model;
 
-public class Chemical {
+public class Glassware {
 
     private String id;
     private String item_name;
+    private Long quentity;
     private Long available;
     private Long recomended;
     private String measurement;
 
-    public Chemical(String id, String item_name, Long available, Long recomended, String measurement) {
+    public Glassware(String id, String item_name, Long quentity, Long available, Long recomended, String measurement) {
         this.id = id;
         this.item_name = item_name;
+        this.quentity = quentity;
         this.available = available;
         this.recomended = recomended;
         this.measurement = measurement;
     }
 
-    public Chemical() {
+    public Glassware() {
     }
 
     public String getId() {
@@ -33,6 +35,14 @@ public class Chemical {
 
     public void setItem_name(String item_name) {
         this.item_name = item_name;
+    }
+
+    public Long getQuentity() {
+        return quentity;
+    }
+
+    public void setQuentity(Long quentity) {
+        this.quentity = quentity;
     }
 
     public Long getAvailable() {
@@ -58,4 +68,5 @@ public class Chemical {
     public void setMeasurement(String measurement) {
         this.measurement = measurement;
     }
+
 }

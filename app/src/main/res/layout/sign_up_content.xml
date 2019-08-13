@@ -27,6 +27,13 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/signup_nameWithInitial"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:met_floatingLabel="normal"
+            android:hint="Name with Initial" />
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/signup_userName"
@@ -35,6 +42,37 @@
             android:layout_marginTop="10dp"
             app:met_floatingLabel="normal"
             android:hint="Username" />
+
+        <RadioGroup
+            android:id="@+id/signup_gender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
+
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/radio_male"
+                android:text="Male"
+                android:textSize="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPurple"
+                android:layout_weight="1"
+                android:onClick="checkButton"
+                android:checked="true"/>
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/radio_female"
+                android:text="Female"
+                android:textSize="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPurple"
+                android:layout_weight="1"
+                android:onClick="checkButton"/>
+
+        </RadioGroup>
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/signup_email"

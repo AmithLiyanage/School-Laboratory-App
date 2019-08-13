@@ -235,7 +235,7 @@
             android:background="@color/colorDarkCyan"/>
 
         <Button
-            android:id="@+id/btn_permenent_equipments"
+            android:id="@+id/btn_permanent_equipments"
             android:text="Permenent"
             android:textColor="@color/colorWhite"
             android:layout_width="130dp"
@@ -245,6 +245,5 @@
             android:background="@color/colorDarkCyan"/>
 
     </LinearLayout>
-
 
 </LinearLayout>

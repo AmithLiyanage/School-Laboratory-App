@@ -25,7 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class NavigationActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    Button btnChemicalView, btnGlasswareView;
+    Button btnChemicalView, btnGlasswareView, btnPerishableView, btnPermanentEquipmentView;
 
     DatabaseReference reference;
     FirebaseUser fuser;
@@ -57,12 +57,16 @@ public class NavigationActivity extends AppCompatActivity
         reference = FirebaseDatabase.getInstance().getReference("Users");
         btnChemicalView = findViewById(R.id.btn_chemicals);
         btnGlasswareView = findViewById(R.id.btn_glasswares);
+        btnPerishableView = findViewById(R.id.btn_perishables);
+        btnPermanentEquipmentView = findViewById(R.id.btn_permanent_equipments);
 
         btnChemicalView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Log.v("Chemical Activity", "chemical btn");
                 Intent intent = new Intent(NavigationActivity.this, ChemicalsActivity.class);
+                //remove new one previous top
+                // .setFlags(Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP)
                 startActivity(intent);
             }
         });
@@ -74,6 +78,24 @@ public class NavigationActivity extends AppCompatActivity
                 startActivity(intent);
             }
         });
+
+        btnPerishableView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(NavigationActivity.this, PerishableActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnPermanentEquipmentView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(NavigationActivity.this, PermanentEquipmentActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
 
     @Override
@@ -116,7 +138,7 @@ public class NavigationActivity extends AppCompatActivity
 
             case R.id.action_profile:
                 FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(NavigationActivity.this, ProfileActivity.class));
+                startActivity(new Intent(NavigationActivity.this, ProfileActivity.class).setFlags(Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP));
 //                finish();
                 return true;
 
@@ -142,7 +164,7 @@ public class NavigationActivity extends AppCompatActivity
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_profile) {
-            openProfile();
+            //openProfile();
         } else if (id == R.id.nav_chat) {
             openChatBox();
         } else if (id == R.id.nav_tools) {
