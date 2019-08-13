@@ -21,8 +21,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 import com.rengwuxian.materialedittext.MaterialEditText;
@@ -32,14 +35,14 @@ public class LoginActivity extends AppCompatActivity {
     MaterialEditText email, password;
     FirebaseAuth auth;
     FirebaseAuth mauth;
-    DatabaseReference referenceCanAccess;
 
     FirebaseUser firebaseUser;
     TextView forget_password;
     Button loginButton, signButton;
     private FirebaseAuth.AuthStateListener authStateListener;
 
-    private DatabaseReference UserRef;
+    private DatabaseReference UserRef, referenceApprove;
+    String approved;
 
     @Override
     protected void onStart() {
@@ -71,8 +74,8 @@ public class LoginActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         auth = FirebaseAuth.getInstance();
-        mauth=FirebaseAuth.getInstance();
-        UserRef= FirebaseDatabase.getInstance().getReference().child("Users");
+        mauth = FirebaseAuth.getInstance();
+        UserRef = FirebaseDatabase.getInstance().getReference().child("Users");
 
         email = findViewById(R.id.login_email);
         password = findViewById(R.id.login_password);
@@ -110,7 +113,27 @@ public class LoginActivity extends AppCompatActivity {
                                         if (task.isSuccessful()) {
                                             firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
-                                            final String currenyUserId=mauth.getCurrentUser().getUid();
+                                            final String currenyUserId = mauth.getCurrentUser().getUid();
+                                            referenceApprove = FirebaseDatabase.getInstance().getReference("Users").child(currenyUserId);//.child("approve").child("app")
+                                            referenceApprove.addValueEventListener(new ValueEventListener() {
+                                                @Override
+                                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                                    try {
+                                                        User user = dataSnapshot.getValue(User.class);
+                                                        approved = user.getApprove();
+                                                    }catch (Exception e){
+                                                        Log.v("User cannot access","Cannot get data for check user is Approved");
+                                                    }
+                                                }
+
+                                                @Override
+                                                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                                }
+                                            });
+
+                                            Log.v("userID", currenyUserId);
+                                            Log.v("userID in firebase", currenyUserId);
 //                                            String deviceToken= FirebaseInstanceId.getInstance().getToken();
 
 
@@ -135,9 +158,11 @@ public class LoginActivity extends AppCompatActivity {
                                             assert firebaseUser != null;
                                             Log.v("Login Activity","Fuser : " + firebaseUser.getDisplayName());
                                             Log.v("Login Activity","Fuser : " + firebaseUser.getUid());
+
 //                                            Intent intent = new Intent(LoginActivity.this, NavigationActivity.class);
 //                                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | intent.FLAG_ACTIVITY_NEW_TASK);
 //                                            startActivity(intent);
+
                                             authStateListener.onAuthStateChanged(FirebaseAuth.getInstance());
                                             pd.dismiss();
 
@@ -146,7 +171,8 @@ public class LoginActivity extends AppCompatActivity {
                                             pd.dismiss();
                                         }
                                     } catch (Exception e) {
-                                        Toast.makeText(LoginActivity.this, "Login error : "+e, Toast.LENGTH_LONG).show();
+                                        //Toast.makeText(LoginActivity.this, "Login error : "+e, Toast.LENGTH_LONG).show();
+                                        Log.v("Login Error ", e.toString());
                                         pd.dismiss();
                                     }
                                 }
@@ -163,17 +189,26 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         authStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
-                    Toast.makeText(LoginActivity.this, "User logged in ", Toast.LENGTH_SHORT).show();
-////                    Intent I = new Intent(ActivityLogin.this, UserActivity.class);
-////                    startActivity(I);
-                    Intent intent = new Intent(LoginActivity.this, NavigationActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(intent);
+
+                    Log.v("userApprove ", approved);
+
+                    //for check user is approved user
+                    if (approved.equals("yes")){
+                        Toast.makeText(LoginActivity.this, "User logged in ", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(LoginActivity.this, NavigationActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(LoginActivity.this, "Your user Profile still Not Approved", Toast.LENGTH_LONG).show();
+                    }
+
                 } else {
                     Toast.makeText(LoginActivity.this, "Login to continue", Toast.LENGTH_SHORT).show();
                 }
