@@ -1,6 +1,6 @@
 package com.amith.schoollabapp.Model;
 
-public class Chemical {
+public class Perishable {
 
     private String id;
     private String item_name;
@@ -8,7 +8,7 @@ public class Chemical {
     private Long recomended;
     private String measurement;
 
-    public Chemical(String id, String item_name, Long available, Long recomended, String measurement) {
+    public Perishable(String id, String item_name, Long available, Long recomended, String measurement) {
         this.id = id;
         this.item_name = item_name;
         this.available = available;
@@ -16,7 +16,7 @@ public class Chemical {
         this.measurement = measurement;
     }
 
-    public Chemical() {
+    public Perishable() {
     }
 
     public String getId() {

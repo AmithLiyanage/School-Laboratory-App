@@ -20,8 +20,8 @@ public class ChemicalAdapter extends RecyclerView.Adapter<ChemicalAdapter.ViewHo
     private Context mContext;
     private List<Chemical> mChemicals;
 
-    public ChemicalAdapter(Context mContext, List<Chemical> mUsers) {
-        this.mChemicals = mUsers;
+    public ChemicalAdapter(Context mContext, List<Chemical> mChemical) {
+        this.mChemicals = mChemical;
         this.mContext = mContext;
     }
 
@@ -38,7 +38,7 @@ public class ChemicalAdapter extends RecyclerView.Adapter<ChemicalAdapter.ViewHo
 
         Chemical chemical = mChemicals.get(position);
         Log.d("dsa2", ""+chemical.getRecomended());
-       holder.chemical_name.setText(chemical.getChemicalName2());
+        holder.chemical_name.setText(chemical.getItem_name());
         holder.available.setText(chemical.getAvailable().toString());
         holder.measurement.setText(chemical.getMeasurement());
 

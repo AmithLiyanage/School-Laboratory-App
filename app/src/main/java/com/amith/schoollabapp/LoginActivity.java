@@ -1,5 +1,6 @@
 package com.amith.schoollabapp;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -43,7 +44,6 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-
 
 //        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 //        referenceCanAccess = FirebaseDatabase.getInstance().getReference("Users");//.child(firebaseUser.toString()).child("approve")
@@ -97,6 +97,11 @@ public class LoginActivity extends AppCompatActivity {
                 if (TextUtils.isEmpty(txt_email) || TextUtils.isEmpty(txt_password)) {
                     Toast.makeText(LoginActivity.this, "All fields are required", Toast.LENGTH_SHORT).show();
                 } else {
+
+                    final ProgressDialog pd = new ProgressDialog(LoginActivity.this);
+                    pd.setMessage("Authenticating..."); //loading text while login
+                    pd.show();
+
                     auth.signInWithEmailAndPassword(txt_email, txt_password)
                             .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                 @Override
@@ -133,13 +138,16 @@ public class LoginActivity extends AppCompatActivity {
 //                                            Intent intent = new Intent(LoginActivity.this, NavigationActivity.class);
 //                                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | intent.FLAG_ACTIVITY_NEW_TASK);
 //                                            startActivity(intent);
-
+                                            authStateListener.onAuthStateChanged(FirebaseAuth.getInstance());
+                                            pd.dismiss();
 
                                         } else {
                                             Toast.makeText(LoginActivity.this, "Authentication Failed", Toast.LENGTH_SHORT).show();
+                                            pd.dismiss();
                                         }
                                     } catch (Exception e) {
                                         Toast.makeText(LoginActivity.this, "Login error : "+e, Toast.LENGTH_LONG).show();
+                                        pd.dismiss();
                                     }
                                 }
                             });
@@ -163,8 +171,6 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "User logged in ", Toast.LENGTH_SHORT).show();
 ////                    Intent I = new Intent(ActivityLogin.this, UserActivity.class);
 ////                    startActivity(I);
-
-
                     Intent intent = new Intent(LoginActivity.this, NavigationActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);

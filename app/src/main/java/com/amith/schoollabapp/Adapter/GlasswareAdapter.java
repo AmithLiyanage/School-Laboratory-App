@@ -1,77 +1,64 @@
-//package com.amith.schoollabapp.Adapter;
-//
-//import android.content.Context;
-//import android.view.LayoutInflater;
-//import android.view.View;
-//import android.view.ViewGroup;
-//
-//import androidx.recyclerview.widget.RecyclerView;
-//
-//import com.amith.schoollabapp.R;
-//
-//import java.util.List;
-//
-//public class GlasswareAdapter extends RecyclerView.Adapter<GlasswareAdapter.ViewHolder> {
-//
-//    private List<String> mData;
-//    private LayoutInflater mInflater;
-//    private ItemClickListener mClickListener;
-//
-//    // data is passed into the constructor
-//    GlasswareAdapter(Context context, List<String> data) {
-//        this.mInflater = LayoutInflater.from(context);
-//        this.mData = data;
-//    }
-//
-//    // inflates the row layout from xml when needed
-//    @Override
-//    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-//        View view = mInflater.inflate(R.layout.glass, parent, false);
-//        return new ViewHolder(view);
-//    }
-//
-//    // binds the data to the TextView in each row
-//    @Override
-//    public void onBindViewHolder(ViewHolder holder, int position) {
-//        String animal = mData.get(position);
-//        holder.myTextView.setText(animal);
-//    }
-//
-//    // total number of rows
-//    @Override
-//    public int getItemCount() {
-//        return mData.size();
-//    }
-//
-//
-//    // stores and recycles views as they are scrolled off screen
-//    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-//        TextView myTextView;
-//
-//        ViewHolder(View itemView) {
-//            super(itemView);
-//            myTextView = itemView.findViewById(R.id.tvAnimalName);
-//            itemView.setOnClickListener(this);
-//        }
-//
-//        @Override
-//        public void onClick(View view) {
-//            if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
-//        }
-//    }
-//
-//    // convenience method for getting data at click position
-//    String getItem(int id) {
-//        return mData.get(id);
-//    }
-//
-//    // allows clicks events to be caught
-//    void setClickListener(ItemClickListener itemClickListener) {
-//        this.mClickListener = itemClickListener;
-//    }
-//
-//    // parent activity will implement this method to respond to click events
-//    public interface ItemClickListener {
-//        void onItemClick(View view, int position);
-//    }
-//}
+package com.amith.schoollabapp.Adapter;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.amith.schoollabapp.Model.Chemical;
+import com.amith.schoollabapp.Model.Glassware;
+import com.amith.schoollabapp.R;
+
+import java.util.List;
+
+public class GlasswareAdapter extends RecyclerView.Adapter<GlasswareAdapter.ViewHolder> {
+
+    private Context mContext;
+    private List<Glassware> mGlassware;
+
+    public GlasswareAdapter(Context mContext, List<Glassware> mGlassware) {
+        this.mGlassware = mGlassware;
+        this.mContext = mContext;
+    }
+
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(mContext).inflate(R.layout.glassware_item, parent, false);
+        return new ViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+
+        Glassware glassware = mGlassware.get(position);
+        holder.glassware_name.setText(glassware.getItem_name());
+        holder.available.setText(glassware.getAvailable().toString());
+        holder.measurement.setText(glassware.getMeasurement());
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return mGlassware.size();
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
+
+        public TextView glassware_name;
+        public TextView available;
+        public TextView measurement;
+
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+
+            glassware_name = itemView.findViewById(R.id.glassware_name);
+            available = itemView.findViewById(R.id.glassware_avaliable);
+            measurement = itemView.findViewById(R.id.glassware_measurement);
+        }
+    }
+}
