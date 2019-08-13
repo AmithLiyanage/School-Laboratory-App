@@ -62,6 +62,8 @@ public class ChemicalsActivity extends AppCompatActivity {
 
         Toast.makeText(ChemicalsActivity.this.getBaseContext(), "0", Toast.LENGTH_SHORT);
         final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+                         Log.d("dsa", firebaseUser.getUid());
+
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("chemicals");
 
         reference.addValueEventListener(new ValueEventListener() {

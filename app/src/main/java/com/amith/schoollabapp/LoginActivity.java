@@ -138,7 +138,7 @@ public class LoginActivity extends AppCompatActivity {
 //                                            Intent intent = new Intent(LoginActivity.this, NavigationActivity.class);
 //                                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | intent.FLAG_ACTIVITY_NEW_TASK);
 //                                            startActivity(intent);
-                                            authStateListener.onAuthStateChanged(FirebaseAuth.getInstance());
+//                                           authStateListener.onAuthStateChanged(FirebaseAuth.getInstance());
                                             pd.dismiss();
 
                                         } else {

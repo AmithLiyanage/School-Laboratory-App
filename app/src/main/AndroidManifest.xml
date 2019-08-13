@@ -31,8 +31,9 @@
         <activity android:name=".ResetPasswordActivity" />
         <activity
             android:name=".LoginActivity"
-            android:parentActivityName=".NavigationActivity" /> <!-- above line parent changed -->
+            android:parentActivityName=".NavigationActivity" /><!-- above line parent changed -->
         <activity
+
             android:name=".SignUpActivity"
             android:parentActivityName=".NavigationActivity" /> <!-- above line parent changed -->
         <activity android:name=".MainActivity">
