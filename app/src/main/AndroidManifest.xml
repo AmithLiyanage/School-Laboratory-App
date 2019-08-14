@@ -6,8 +6,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <dist:module dist:instant="true" />
 
@@ -18,7 +18,8 @@
         android:roundIcon="@drawable/smart_lab_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PermanentEquipmentActivity"></activity>
+        <activity android:name=".LendingActivity"></activity>
+        <activity android:name=".PermanentEquipmentActivity" />
         <activity android:name=".PerishableActivity" />
         <activity android:name=".GlasswareActivity" />
         <activity android:name=".ChemicalsActivity" />
@@ -33,9 +34,8 @@
         <activity android:name=".ResetPasswordActivity" />
         <activity
             android:name=".LoginActivity"
-            android:parentActivityName=".NavigationActivity" /><!-- above line parent changed -->
+            android:parentActivityName=".NavigationActivity" /> <!-- above line parent changed -->
         <activity
-
             android:name=".SignUpActivity"
             android:parentActivityName=".NavigationActivity" /> <!-- above line parent changed -->
         <activity android:name=".MainActivity">

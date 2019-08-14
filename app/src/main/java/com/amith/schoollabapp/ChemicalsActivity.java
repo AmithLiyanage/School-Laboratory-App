@@ -46,7 +46,7 @@ public class ChemicalsActivity extends AppCompatActivity {
                 startActivity(new Intent(ChemicalsActivity.this, NavigationActivity.class).setFlags(Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP));
             }
         });
-//
+
         recyclerView = (RecyclerView) findViewById(R.id.recycler_chemical_view);
         recyclerView.setHasFixedSize(true);
 

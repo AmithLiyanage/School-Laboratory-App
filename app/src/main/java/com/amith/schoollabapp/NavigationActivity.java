@@ -25,7 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class NavigationActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    Button btnChemicalView, btnGlasswareView, btnPerishableView, btnPermanentEquipmentView;
+    Button btnLendingView, btnChemicalView, btnGlasswareView, btnPerishableView, btnPermanentEquipmentView;
 
     DatabaseReference reference;
     FirebaseUser fuser;
@@ -55,18 +55,25 @@ public class NavigationActivity extends AppCompatActivity
 
         fuser = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users");
+
+        btnLendingView = findViewById(R.id.btn_lending);
         btnChemicalView = findViewById(R.id.btn_chemicals);
         btnGlasswareView = findViewById(R.id.btn_glasswares);
         btnPerishableView = findViewById(R.id.btn_perishables);
         btnPermanentEquipmentView = findViewById(R.id.btn_permanent_equipments);
 
+        btnLendingView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(NavigationActivity.this, LendingActivity.class);
+                startActivity(intent);
+            }
+        });
+
         btnChemicalView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Log.v("Chemical Activity", "chemical btn");
                 Intent intent = new Intent(NavigationActivity.this, ChemicalsActivity.class);
-                //remove new one previous top
-                // .setFlags(Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP)
                 startActivity(intent);
             }
         });
