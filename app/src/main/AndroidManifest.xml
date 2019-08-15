@@ -13,12 +13,13 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/smart_lab_app_icon"
+        android:icon="@drawable/smart_lab_smart_logo"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/smart_lab_logo"
+        android:roundIcon="@drawable/smart_lab_smart_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LendingActivity"></activity>
+        <activity android:name=".LendedItemsActivity"></activity>
+        <activity android:name=".LendingActivity" />
         <activity android:name=".PermanentEquipmentActivity" />
         <activity android:name=".PerishableActivity" />
         <activity android:name=".GlasswareActivity" />

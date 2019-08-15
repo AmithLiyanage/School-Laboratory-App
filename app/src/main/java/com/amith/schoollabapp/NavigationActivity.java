@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,7 +26,9 @@ import com.google.firebase.database.FirebaseDatabase;
 public class NavigationActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    Button btnLendingView, btnChemicalView, btnGlasswareView, btnPerishableView, btnPermanentEquipmentView;
+    //Button btnLendingView, btnChemicalView, btnGlasswareView, btnPerishableView, btnPermanentEquipmentView;
+    Button btnLendingView;
+    ImageButton btnChemicalView, btnGlasswareView, btnPerishableView, btnPermanentEquipmentView;
 
     DatabaseReference reference;
     FirebaseUser fuser;

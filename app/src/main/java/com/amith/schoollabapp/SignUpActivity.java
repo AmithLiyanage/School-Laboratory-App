@@ -35,10 +35,10 @@ public class SignUpActivity extends AppCompatActivity {
     MaterialEditText nameWithInitial, userName, email, password, cpassword, phoneNumber;
     Button btnSignUp;
     RadioGroup radioGroupGender;
-    AppCompatRadioButton radioButtonGender;
-    //RadioButton radioButtonGender;
+    //AppCompatRadioButton radioButtonGender;
+    RadioButton radioButtonGender;
 
-    String strGender="Male", strMale="Male", strFemale="Female";
+    private String strGender, strMale="Male", strFemale="Female";
 
     FirebaseAuth auth;
     DatabaseReference reference;
@@ -70,56 +70,51 @@ public class SignUpActivity extends AppCompatActivity {
 
         btnSignUp =  findViewById(R.id.signup_btnSignUp);  //SignUp Button
 
+        radioGroupGender = (RadioGroup)findViewById(R.id.signup_gender);
+        radioGroupGender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                // find which radio button is selected
+                int selectedId = radioGroupGender.getCheckedRadioButtonId();
+                radioButtonGender = (RadioButton)findViewById(selectedId);
+                strGender = radioButtonGender.getText().toString();
+                Toast.makeText(getApplicationContext(),radioButtonGender.getText(),Toast.LENGTH_SHORT).show();
+            }
+
+        });
 
 
         auth = FirebaseAuth.getInstance();
 
-//        radioGroupGender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(RadioGroup group, int checkedId) {
-//
-//                radioButtonGender = radioGroupGender.findViewById(checkedId);
-//
-//                switch (checkedId) {
-//                    case R.id.radio_male:
-//                        strGender = radioButtonGender.getText().toString();
-//                        //strGender = strMale;
-//                        break;
-//                    case R.id.radio_female:
-//                        strGender = radioButtonGender.getText().toString();
-//                        //strGender = strFemale;
-//                        break;
-//                    default:
-//                        strGender = null;
-//                }
-//
-//            }
-//        });
+        radioGroupGender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                radioButtonGender = radioGroupGender.findViewById(checkedId);
+
+                switch (checkedId) {
+                    case R.id.radio_male:
+                        strGender = radioButtonGender.getText().toString();
+                        //strGender = strMale;
+                        break;
+                    case R.id.radio_female:
+                        strGender = radioButtonGender.getText().toString();
+                        //strGender = strFemale;
+                        break;
+                    default:
+                        strGender = null;
+                }
+
+            }
+        });
 
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                if (radioGroupGender != null) {
-                    int radioId = radioGroupGender.getCheckedRadioButtonId();
-                    radioButtonGender = findViewById(radioId);
-
-//                    if (radioId == R.id.radio_male) {
-//                        //strGender = radioButtonGender.getText().toString();
-//                        strGender = strMale;
-//                        Log.e("Gender in radio", "1");
-//                        Toast.makeText(SignUpActivity.this, "Gender = 1", Toast.LENGTH_SHORT).show();
-//                    } else {
-//                        //strGender = radioButtonGender.getText().toString();
-//                        strGender = strFemale;
-//                        Toast.makeText(SignUpActivity.this, "Gender = 2", Toast.LENGTH_SHORT).show();
-//                        Log.e("Gender in radio", "2");
-//                    }
-                }
-
-                Log.v("Gender in radio", strGender);
-                Toast.makeText(SignUpActivity.this, "Gender = "+strGender, Toast.LENGTH_LONG).show();
+                //Log.v("Gender in radio", strGender);
+                //Toast.makeText(SignUpActivity.this, "Gender = "+strGender, Toast.LENGTH_LONG).show();
 
                 String txt_nameWithInitial = nameWithInitial.getText().toString();
                 String txt_username = userName.getText().toString();
@@ -154,12 +149,12 @@ public class SignUpActivity extends AppCompatActivity {
                 strGender = radioButtonGender.getText().toString();
                 //strGender = strMale;
                 Log.e("Gender in radio", "1");
-                Toast.makeText(SignUpActivity.this, "Gender = 1", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(SignUpActivity.this, "Gender = 1", Toast.LENGTH_SHORT).show();
             } else {
                 strGender = radioButtonGender.getText().toString();
                 //strGender = strFemale;
-                Toast.makeText(SignUpActivity.this, "Gender = 2", Toast.LENGTH_SHORT).show();
                 Log.e("Gender in radio", "2");
+                //Toast.makeText(SignUpActivity.this, "Gender = 2", Toast.LENGTH_SHORT).show();
             }
         }
     }
